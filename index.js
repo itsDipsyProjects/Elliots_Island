@@ -1,14 +1,14 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 1224;
-canvas.height = 976;
+canvas.width = 1024;
+canvas.height = 676;
 
 let backGroundImage = new Image();
 backGroundImage.src = "./assets/gameMapImage.png";
 
-let playerImage = new Image();
-playerImage.src = "./assets/playerDown.png";
+let restingPlayerImage = new Image();
+restingPlayerImage.src = "./assets/playerDown.png";
 
 class Background {
     constructor(image, position) {
@@ -22,28 +22,39 @@ class Background {
 }
 
 class Player {
-    constructor(image, position) {
+    
+    
+    
+    constructor(image, position, incrementor_for_frames) {
         this.image = image;
         this.position = position;
+        this.incrementor_for_frames = incrementor_for_frames;
     }
-
+    
     draw() {
         ctx.drawImage(
             this.image,
+            0 + this.incrementor_for_frames,
             0,
-            0,
-            playerImage.width / 4,
-            playerImage.height,
+            this.image.width / 4,
+            this.image.height,
             this.position.x,
             this.position.y,
-            playerImage.width / 4,
-            playerImage.height
+            this.image.width / 4,
+            this.image.height
         );
     }
 }
 
-let background = new Background(backGroundImage, { x: -870, y: -900 });
-let player = new Player(playerImage, { x: 590, y: 600 });
+
+let starting_posistion_for_player = { x: 490, y: 350 };
+let starting_posistion_for_background = { x: -970, y: -900 };
+
+let background = new Background(backGroundImage, starting_posistion_for_background);
+
+let player = new Player(restingPlayerImage, starting_posistion_for_player, 0);
+
+
 
 let keys = {
     w: {
@@ -61,36 +72,71 @@ let keys = {
 };
 
 
-// TO-DO: skapa collision genom att skapa en 2D array av collision_map array varje 70 del av arrayen ska stoppas in i en ny array och pushah till 2D arrayen
-let collision_2D_format = [];
-console.log(collision_map_array);
-for (let i = 0; i < collision_map_array.length;  i++) {
-    if(i === 70){
+// // TO-DO: skapa collision genom att skapa en 2D array av collision_map array varje 70 del av arrayen ska stoppas in i en ny array och pushah till 2D arrayen
+// let collision_2D_format = [];
+// console.log(collision_map_array);
+// for (let i = 0; i < collision_map_array.length;  i++) {
+//     if(i === 70){
 
-    }
+//     }
     
-}
+// }
+
+
+
+
+
+
+let playerUpImage = new Image();
+playerUpImage.src = "./assets/playerUp.png";
+  
+
 
 function gameLoop() {
     window.requestAnimationFrame(gameLoop);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     // movment should be here instad of outside it creates smoothness in frames 
     if (keys.w.pressed) {
-        background.position.y += 1;
+        background.position.y += 2;
+        let playerUpImage = new Image();
+        playerUpImage.src = "./assets/playerUp.png";
+        player.image = playerUpImage;
+        if(player.incrementor_for_frames >= 192){
+            player.incrementor_for_frames += 48;
+        }
+        else{
+            player.incrementor_for_frames = 0 ;
+        }
     }
+
     if (keys.s.pressed) {
-        background.position.y -= 1;
+        background.position.y -= 2;
+        let playerUpImage = new Image();
+        playerUpImage.src = "./assets/playerDown.png";
+        player.image = playerUpImage;
+        
     }
+
     if (keys.a.pressed) {
-        background.position.x += 1;
+        background.position.x += 2;
+        let playerLeftImage = new Image();
+        playerLeftImage.src = "./assets/playerLeft.png";
+        player.image = playerLeftImage;
+        
     }
+
     if (keys.d.pressed) {
-        background.position.x -= 1;
+        background.position.x -= 2;
+        let playerRightImage = new Image();
+        playerRightImage.src = "./assets/playerRight.png";
+        player.image = playerRightImage;
     }
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+    
+    
     background.draw();
     player.draw();
+    
 }
 
 // Event listeners for keydown and keyup
