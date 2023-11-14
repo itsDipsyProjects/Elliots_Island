@@ -154,9 +154,13 @@ function gameLoop() {
     }
 
     // Drawing the background, player, and collision rectangle
+
     background.draw();
+    
     ctx.fillStyle = "red";
     ctx.fillRect(house_enter_rect.position.x, house_enter_rect.position.y, house_enter_rect.width, house_enter_rect.height);
+ 
+    
 
     // Collision detection
     if( player.position.x + player.width > house_enter_rect.position.x && 
@@ -167,7 +171,12 @@ function gameLoop() {
     {
         
         console.log("in the house");
-        
+        let inside_house_image = new Image();
+        inside_house_image.src = "./assets/inne_i_huset.png"
+        background.image = inside_house_image
+        background.position.x = -1950
+        background.position.y = -1000
+
     }
     
     player.draw();
