@@ -22,9 +22,6 @@ class Background {
 }
 
 class Player {
-    
-    
-    
     constructor(image, position, incrementor_for_frames) {
         this.image = image;
         this.position = position;
@@ -32,7 +29,7 @@ class Player {
         this.width = image.width / 4; // Assuming the sprite sheet has 4 frames
         this.height = image.height;
     }
-    
+
     draw() {
         ctx.drawImage(
             this.image,
@@ -48,18 +45,12 @@ class Player {
     }
 }
 
-
-
-
-
 let starting_posistion_for_player = { x: 490, y: 350 };
 let starting_posistion_for_background = { x: -970, y: -900 };
 
 let background = new Background(backGroundImage, starting_posistion_for_background);
 
 let player = new Player(restingPlayerImage, starting_posistion_for_player, 0);
-
-
 
 let keys = {
     w: {
@@ -76,36 +67,36 @@ let keys = {
     },
 };
 
-
-// // TO-DO: skapa collision genom att skapa en 2D array av collision_map array varje 70 del av arrayen ska stoppas in i en ny array och pushah till 2D arrayen
-// let collision_2D_format = [];
-// console.log(collision_map_array);
-// for (let i = 0; i < collision_map_array.length;  i++) {
-//     if(i === 70){
-
-//     }
-    
-// }
-
-
-
-
-
-
-let house_enter_rect = {position: {x: 490, y: 290}, width: 50, height:50};  
-
+let house_enter_rect = { position: { x: 480, y: 250 }, width: 50, height: 50 };
+let enter_uppstairs_rect = { position: { x: 480, y: 300 }, width: 50, height: 50 };
 
 let frameCount = 0;
 let frameThreshold = 10;
 
+let is_in_the_house = false;
+
+// ... (your existing code)
+
+let inside_house_image = new Image();
+inside_house_image.src = "./assets/inne_i_huset.png";
+
+
+
+let movables = [background, house_enter_rect];
+
 function gameLoop() {
+    
     window.requestAnimationFrame(gameLoop);
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Check if any movement key is pressed
     let isMoving = keys.w.pressed || keys.s.pressed || keys.a.pressed || keys.d.pressed;
+   
 
-    // Update player frame only when moving
+    // Adjusted collision rectangle drawing
+   
+    
+
+
     if (isMoving) {
         frameCount++;
         if (frameCount > frameThreshold) {
@@ -113,108 +104,114 @@ function gameLoop() {
             if (player.incrementor_for_frames >= player.image.width) {
                 player.incrementor_for_frames = 0;
             }
-            frameCount = 0; // Reset frame count
+            frameCount = 0;
         }
     } else {
-        // Reset player frame to default when not moving
         player.incrementor_for_frames = 0;
     }
 
-    // Movement logic
     if (keys.w.pressed) {
-        background.position.y += 2;
-        house_enter_rect.position.y += 2;
+        movables.forEach((a_movable) =>{
+            a_movable.position.y += 2;
+        });
         let playerUpImage = new Image();
         playerUpImage.src = "./assets/playerUp.png";
         player.image = playerUpImage;
     }
 
     if (keys.s.pressed) {
-        background.position.y -= 2;
-        house_enter_rect.position.y -= 2;
+        movables.forEach((a_movable) =>{
+            a_movable.position.y -= 2;
+        });
         let playerUpImage = new Image();
         playerUpImage.src = "./assets/playerDown.png";
         player.image = playerUpImage;
     }
 
     if (keys.a.pressed) {
-        background.position.x += 2;
-        house_enter_rect.position.x += 2;
+        movables.forEach((a_movable) =>{
+            a_movable.position.x += 2;
+        });
         let playerLeftImage = new Image();
         playerLeftImage.src = "./assets/playerLeft.png";
         player.image = playerLeftImage;
     }
 
     if (keys.d.pressed) {
-        background.position.x -= 2;
-        house_enter_rect.position.x -= 2;
+        movables.forEach((a_movable) =>{
+            a_movable.position.x -= 2;
+        });
         let playerRightImage = new Image();
         playerRightImage.src = "./assets/playerRight.png";
         player.image = playerRightImage;
     }
 
-    // Drawing the background, player, and collision rectangle
-
-    background.draw();
     
-    ctx.fillStyle = "red";
-    ctx.fillRect(house_enter_rect.position.x, house_enter_rect.position.y, house_enter_rect.width, house_enter_rect.height);
- 
     
 
-    // Collision detection
-    if( player.position.x + player.width > house_enter_rect.position.x && 
+    if (
         player.position.x < house_enter_rect.position.x + house_enter_rect.width &&
-        player.position.y + player.height > house_enter_rect.position.y && 
-        player.position.y < house_enter_rect.position.y + house_enter_rect.height)
-        
-    {
-        
-        console.log("in the house");
-        let inside_house_image = new Image();
-        inside_house_image.src = "./assets/inne_i_huset.png"
-        background.image = inside_house_image
-        background.position.x = -1950
-        background.position.y = -1000
+        player.position.x + player.width > house_enter_rect.position.x &&
+        player.position.y < house_enter_rect.position.y + house_enter_rect.height &&
+        player.position.y + player.height > house_enter_rect.position.y
+    ) {
+        background.image = inside_house_image;
+        background.position.x = -1950;
+        background.position.y = -1000;
+        ctx.clearRect(house_enter_rect.position.x, house_enter_rect.y, house_enter_rect.width, house_enter_rect.height)
+        is_in_the_house = true;
+    }
+    
+    
+   
+    
+    
+    background.draw()
 
+    if(is_in_the_house === true){
+        console.log("true");
+        ctx.fillStyle = "black";
+        ctx.fillRect(enter_uppstairs_rect.position.x, enter_uppstairs_rect.position.y, enter_uppstairs_rect.width, enter_uppstairs_rect.height)
+        movables.push(enter_uppstairs_rect);
     }
     
     player.draw();
-}
-    
 
-// Event listeners for keydown and keyup
+}
+
+// ... (your existing code)
+
 window.addEventListener("keydown", (event) => {
-    switch(event.key){
+    switch (event.key) {
         case "w":
-            keys.w.pressed = true
-        break;
+            keys.w.pressed = true;
+            break;
         case "s":
-            keys.s.pressed = true
-        break;
+            keys.s.pressed = true;
+            break;
         case "a":
-            keys.a.pressed = true
-        break;
+            keys.a.pressed = true;
+            break;
         case "d":
-            keys.d.pressed = true
-        break;
+            keys.d.pressed = true;
+            break;
     }
 });
 
 window.addEventListener("keyup", (event) => {
-    switch(event.key){
+    switch (event.key) {
         case "w":
-            keys.w.pressed = false
-        break;
+            keys.w.pressed = false;
+            break;
         case "s":
-            keys.s.pressed = false
-        break;
+            keys.s.pressed = false;
+            break;
         case "a":
-            keys.a.pressed = false
-        break;
+            keys.a.pressed = false;
+            break;
         case "d":
-            keys.d.pressed = false
-        break;
+            keys.d.pressed = false;
+            break;
     }
 });
 
