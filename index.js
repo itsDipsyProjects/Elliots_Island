@@ -84,6 +84,7 @@ inside_house_image.src = "./assets/inne_i_huset.png";
 
 let movables = [background, house_enter_rect];
 
+
 function gameLoop() {
     
     window.requestAnimationFrame(gameLoop);
@@ -177,6 +178,7 @@ function gameLoop() {
     
     player.draw();
 
+
 }
 
 // ... (your existing code)
@@ -215,4 +217,8 @@ window.addEventListener("keyup", (event) => {
     }
 });
 
+
+ctx.fillRect(500, 200, 50, 50);
+  
+ctx.clearRect(500, 200, 50, 50);
 gameLoop();
