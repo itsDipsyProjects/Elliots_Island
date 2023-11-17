@@ -93,15 +93,15 @@ let background_image = new Image();
 background_image.src = "../assets/gameMapImage.png"
 let test_rectangle = {postion:{x:470, y:300}, width:50, height:50};
 
+// GAME LOOP
 function gameLoop(){
     window.requestAnimationFrame(gameLoop);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(background_image, background_postion.x, background_postion.y);
-    
+    console.log(if_p_is_pressed)
     player.draw();
     
     if(if_p_is_pressed === false){
-        console.log("if_p_is_pressed is false right now")
         ctx.fillRect(test_rectangle.postion.x, test_rectangle.postion.y, test_rectangle.width, test_rectangle.height);
     }
    
@@ -126,11 +126,7 @@ function gameLoop(){
         background_postion.x -= 2;
         test_rectangle.postion.x -= 2;
     }
-
-    // Draw or Clear Rectangle based on if_p_is_pressed
-    if (if_p_is_pressed === false) {
-        ctx.fillRect(test_rectangle.postion.x, test_rectangle.postion.y, test_rectangle.width, test_rectangle.height);
-    }
+   
 }
 
 gameLoop();

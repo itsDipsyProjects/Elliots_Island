@@ -68,7 +68,15 @@ let keys = {
 };
 
 let house_enter_rect = { position: { x: 480, y: 250 }, width: 50, height: 50 };
-let enter_uppstairs_rect = { position: { x: 480, y: 300 }, width: 50, height: 50 };
+let enter_back_outside = { position: { x: 480, y: 380 }, width: 50, height: 50 };
+
+
+
+let every_enter_rect = [];
+
+every_enter_rect.push(house_enter_rect);
+every_enter_rect.push(enter_back_outside);
+
 
 let frameCount = 0;
 let frameThreshold = 10;
@@ -82,13 +90,12 @@ inside_house_image.src = "./assets/inne_i_huset.png";
 
 
 
-let movables = [background, house_enter_rect];
-
+let movables = [background, house_enter_rect, enter_back_outside];
 
 function gameLoop() {
     
     window.requestAnimationFrame(gameLoop);
-
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let isMoving = keys.w.pressed || keys.s.pressed || keys.a.pressed || keys.d.pressed;
    
@@ -147,33 +154,45 @@ function gameLoop() {
         player.image = playerRightImage;
     }
 
+    background.draw()
     
-    
+    if(is_in_the_house === false){
 
-    if (
-        player.position.x < house_enter_rect.position.x + house_enter_rect.width &&
-        player.position.x + player.width > house_enter_rect.position.x &&
-        player.position.y < house_enter_rect.position.y + house_enter_rect.height &&
-        player.position.y + player.height > house_enter_rect.position.y
-    ) {
-        background.image = inside_house_image;
-        background.position.x = -1950;
-        background.position.y = -1000;
-        ctx.clearRect(house_enter_rect.position.x, house_enter_rect.y, house_enter_rect.width, house_enter_rect.height)
-        is_in_the_house = true;
+        ctx.fillStyle = "green";
+        ctx.fillRect(house_enter_rect.position.x, house_enter_rect.position.y, house_enter_rect.width, house_enter_rect.height)
+
+        if (
+            player.position.x < house_enter_rect.position.x + house_enter_rect.width &&
+            player.position.x + player.width > house_enter_rect.position.x &&
+            player.position.y < house_enter_rect.position.y + house_enter_rect.height &&
+            player.position.y + player.height > house_enter_rect.position.y
+        ) {
+            background.image = inside_house_image;
+            background.position.x = -1950;
+            background.position.y = -1000;
+            is_in_the_house = true;
+        }
     }
     
-    
-   
-    
-    
-    background.draw()
 
     if(is_in_the_house === true){
-        console.log("true");
-        ctx.fillStyle = "black";
-        ctx.fillRect(enter_uppstairs_rect.position.x, enter_uppstairs_rect.position.y, enter_uppstairs_rect.width, enter_uppstairs_rect.height)
-        movables.push(enter_uppstairs_rect);
+        ctx.fillStyle = "red";
+        ctx.fillRect(enter_back_outside.position.x, enter_back_outside.position.y, enter_back_outside.width, enter_back_outside.height)
+
+
+        if (
+            player.position.x < enter_back_outside.position.x + enter_back_outside.width &&
+            player.position.x + player.width > enter_back_outside.position.x &&
+            player.position.y < enter_back_outside.position.y + enter_back_outside.height &&
+            player.position.y + player.height > enter_back_outside.position.y
+        ) {
+            background.image = backGroundImage;
+            background.position.x = -1000;
+            background.position.y = -900;
+            is_in_the_house = false;
+        }
+
+        console.log(every_enter_rect);
     }
     
     player.draw();
