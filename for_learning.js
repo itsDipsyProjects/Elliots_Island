@@ -39,7 +39,7 @@ let keys = {
     p:false
 }
 
-function movement(){
+function init_movement(){
     window.addEventListener("keydown", (event) =>{
         switch(event.key){
             case "w":
@@ -86,8 +86,7 @@ function movement(){
     })
 }
 
-movement();
-
+init_movement();
 
 let background_postion = {x: -1000, y:-1000}; 
 let background_image = new Image();
@@ -102,38 +101,35 @@ function gameLoop(){
     player.draw();
     
     if(if_p_is_pressed === false){
-        console.log("if_p_is_pressed is true right now")
+        console.log("if_p_is_pressed is false right now")
         ctx.fillRect(test_rectangle.postion.x, test_rectangle.postion.y, test_rectangle.width, test_rectangle.height);
     }
    
 
     
     if (keys.w) {
-        background_postion.y += 1;
-        test_rectangle.postion.y += 1;
+        background_postion.y += 2;
+        test_rectangle.postion.y += 2;
     }
 
     if (keys.s) {
-        background_postion.y -= 1;
-        test_rectangle.postion.y -= 1;
+        background_postion.y -= 2;
+        test_rectangle.postion.y -= 2;
     }
 
     if (keys.a) {
-        background_postion.x += 1;
-        test_rectangle.postion.x += 1;
+        background_postion.x += 2;
+        test_rectangle.postion.x += 2;
     }
 
     if (keys.d) {
-        background_postion.x -= 1;
-        test_rectangle.postion.x -= 1;
+        background_postion.x -= 2;
+        test_rectangle.postion.x -= 2;
     }
 
-    if (if_p_is_pressed === true) { 
-
-        // TODO: this is the problem some how the postions are right but it just does no want to clear and we do come into this if case 
-        // so there is  a problem with the clearRect it needs further investiagtion
-        console.log("if_p_is_pressed is false right now")
-        ctx.clearRect(test_rectangle.postion.x, test_rectangle.postion.y, test_rectangle.width, test_rectangle.height);
+    // Draw or Clear Rectangle based on if_p_is_pressed
+    if (if_p_is_pressed === false) {
+        ctx.fillRect(test_rectangle.postion.x, test_rectangle.postion.y, test_rectangle.width, test_rectangle.height);
     }
 }
 
