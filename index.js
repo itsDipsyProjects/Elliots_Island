@@ -154,7 +154,6 @@ function gameLoop() {
         player.image = playerRightImage;
     }
 
-    background.draw()
     
     if(is_in_the_house === false){
 
@@ -194,7 +193,7 @@ function gameLoop() {
 
         console.log(every_enter_rect);
     }
-    
+    background.draw()
     player.draw();
 
 
