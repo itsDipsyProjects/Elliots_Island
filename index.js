@@ -68,29 +68,32 @@ let keys = {
 };
 
 let house_enter_rect = { position: { x: 480, y: 250 }, width: 50, height: 50 };
-let enter_back_outside = { position: { x: 480, y: 380 }, width: 50, height: 50 };
-
-
+let enter_back_outside = { position: { x: 500, y: 320 }, width: 50, height: 50 };
+let enter_uppstairs = { position: { x: 690, y: -495 }, width: 50, height: 50 };
+let enter_downstairs = { position: { x: 600, y: -505 }, width: 50, height: 50 };
 
 let every_enter_rect = [];
 
 every_enter_rect.push(house_enter_rect);
 every_enter_rect.push(enter_back_outside);
+every_enter_rect.push(enter_uppstairs);
 
 
 let frameCount = 0;
 let frameThreshold = 10;
 
 let is_in_the_house = false;
+let is_uppstairs = false;
 
 // ... (your existing code)
 
 let inside_house_image = new Image();
 inside_house_image.src = "./assets/inne_i_huset.png";
 
+let uppstairs_image = new Image();
+uppstairs_image.src = "./assets/uppstairs.png";
 
-
-let movables = [background, house_enter_rect, enter_back_outside];
+let movables = [background, house_enter_rect, enter_back_outside, enter_uppstairs, enter_downstairs];
 
 function gameLoop() {
     
@@ -154,7 +157,8 @@ function gameLoop() {
         player.image = playerRightImage;
     }
 
-    background.draw()
+    //enter inside
+    
     
     if(is_in_the_house === false){
 
@@ -168,17 +172,52 @@ function gameLoop() {
             player.position.y + player.height > house_enter_rect.position.y
         ) {
             background.image = inside_house_image;
-            background.position.x = -1950;
-            background.position.y = -1000;
+            background.position.x = -1750;
+            background.position.y = -1560;
             is_in_the_house = true;
         }
     }
     
-
+    // enter uppstairs
+    
     if(is_in_the_house === true){
-        ctx.fillStyle = "red";
-        ctx.fillRect(enter_back_outside.position.x, enter_back_outside.position.y, enter_back_outside.width, enter_back_outside.height)
 
+        if(is_uppstairs === false){
+            ctx.fillStyle = "red";
+            ctx.fillRect(enter_back_outside.position.x, enter_back_outside.position.y, enter_back_outside.width, enter_back_outside.height)
+    
+            ctx.fillStyle = "blue";
+            ctx.fillRect(enter_uppstairs.position.x, enter_uppstairs.position.y, enter_uppstairs.width, enter_uppstairs.height)
+            if (
+                player.position.x < enter_uppstairs.position.x + enter_uppstairs.width &&
+                player.position.x + player.width > enter_uppstairs.position.x &&
+                player.position.y < enter_uppstairs.position.y + enter_uppstairs.height &&
+                player.position.y + player.height > enter_uppstairs.position.y
+            ) {
+                background.image = uppstairs_image;
+                background.position.x = -1500;
+                background.position.y = -500;
+                is_uppstairs = true;                
+            }
+        }
+
+        if(is_uppstairs === true){
+            ctx.fillStyle = "blue";
+            ctx.fillRect(enter_downstairs.position.x, enter_downstairs.position.y, enter_downstairs.width, enter_downstairs.height)
+            if (
+                player.position.x < enter_downstairs.position.x + enter_downstairs.width &&
+                player.position.x + player.width > enter_downstairs.position.x &&
+                player.position.y < enter_downstairs.position.y + enter_downstairs.height &&
+                player.position.y + player.height > enter_downstairs.position.y
+            ) {
+                background.image = inside_house_image;
+                background.position.x = -2000;
+                background.position.y = -770;
+                is_uppstairs = false;                
+            }
+        }
+
+        //Enter back outside
 
         if (
             player.position.x < enter_back_outside.position.x + enter_back_outside.width &&
@@ -192,11 +231,11 @@ function gameLoop() {
             is_in_the_house = false;
         }
 
-        console.log(every_enter_rect);
     }
-    
-    player.draw();
 
+   
+    background.draw();
+    player.draw();
 
 }
 
@@ -237,7 +276,4 @@ window.addEventListener("keyup", (event) => {
 });
 
 
-ctx.fillRect(500, 200, 50, 50);
-  
-ctx.clearRect(500, 200, 50, 50);
 gameLoop();
