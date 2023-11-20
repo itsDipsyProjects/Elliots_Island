@@ -71,12 +71,19 @@ let house_enter_rect = { position: { x: 480, y: 250 }, width: 50, height: 50 };
 let enter_back_outside = { position: { x: 500, y: 320 }, width: 50, height: 50 };
 let enter_uppstairs = { position: { x: 690, y: -495 }, width: 50, height: 50 };
 let enter_downstairs = { position: { x: 600, y: -505 }, width: 50, height: 50 };
+let click_on_computer = { position: { x: 802, y: -830 }, width: 60, height: 90 }
+let click_on_file = { position: { x: 800, y: -620 }, width: 100, height: 100 }
 
-let every_enter_rect = [];
 
-every_enter_rect.push(house_enter_rect);
-every_enter_rect.push(enter_back_outside);
-every_enter_rect.push(enter_uppstairs);
+
+//for later maybe we will see 
+// let every_enter_rect = [];
+
+// every_enter_rect.push(house_enter_rect);
+// every_enter_rect.push(enter_back_outside);
+// every_enter_rect.push(enter_uppstairs);
+// every_enter_rect.push(click_on_computer);
+// every_enter_rect.push(click_on_file)
 
 
 let frameCount = 0;
@@ -84,6 +91,7 @@ let frameThreshold = 10;
 
 let is_in_the_house = false;
 let is_uppstairs = false;
+let on_computer = false;
 
 // ... (your existing code)
 
@@ -93,7 +101,12 @@ inside_house_image.src = "./assets/inne_i_huset.png";
 let uppstairs_image = new Image();
 uppstairs_image.src = "./assets/uppstairs.png";
 
-let movables = [background, house_enter_rect, enter_back_outside, enter_uppstairs, enter_downstairs];
+
+let screen_image = new Image();
+screen_image.src = "./assets/screen.png";
+
+
+let movables = [background, house_enter_rect, enter_back_outside, enter_uppstairs, enter_downstairs, click_on_computer, click_on_file];
 
 function gameLoop() {
     
@@ -159,7 +172,7 @@ function gameLoop() {
 
     //enter inside
     
-    
+   
     if(is_in_the_house === false){
 
         ctx.fillStyle = "green";
@@ -178,9 +191,17 @@ function gameLoop() {
         }
     }
     
+    if(on_computer === true){
+        ctx.fillStyle = "green";
+        ctx.fillRect(click_on_file.position.x, click_on_file.position.y, click_on_file.width, click_on_file.height)
+    }
     // enter uppstairs
     
     if(is_in_the_house === true){
+
+
+
+
 
         if(is_uppstairs === false){
             ctx.fillStyle = "red";
@@ -204,6 +225,13 @@ function gameLoop() {
         if(is_uppstairs === true){
             ctx.fillStyle = "blue";
             ctx.fillRect(enter_downstairs.position.x, enter_downstairs.position.y, enter_downstairs.width, enter_downstairs.height)
+
+
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(click_on_computer.position.x, click_on_computer.position.y, click_on_computer.width, click_on_computer.height)
+
+
             if (
                 player.position.x < enter_downstairs.position.x + enter_downstairs.width &&
                 player.position.x + player.width > enter_downstairs.position.x &&
@@ -215,6 +243,7 @@ function gameLoop() {
                 background.position.y = -770;
                 is_uppstairs = false;                
             }
+
         }
 
         //Enter back outside
@@ -238,6 +267,49 @@ function gameLoop() {
     player.draw();
 
 }
+
+
+
+// Assuming canvas is your canvas element
+canvas.addEventListener('click', function(event) {
+    // Get the mouse coordinates relative to the canvas
+    const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+    const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+    // Check if the click is within the computer area
+    if (
+        mouseX > click_on_computer.position.x &&
+        mouseX < click_on_computer.position.x + click_on_computer.width &&
+        mouseY > click_on_computer.position.y &&
+        mouseY < click_on_computer.position.y + click_on_computer.height
+    ) {
+        // Perform the actions when clicked
+        background.image = screen_image;
+        background.position.x = 300;
+        background.position.y = 50;
+
+        
+        is_uppstairs = false;
+        is_in_the_house = false;
+        on_computer = true;
+    }
+
+    if(on_computer === true){
+        if (
+            mouseX > click_on_file.position.x &&
+            mouseX < click_on_file.position.x + click_on_file.width &&
+            mouseY > click_on_file.position.y &&
+            mouseY < click_on_file.position.y + click_on_file.height
+        ) {
+            window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+        }
+    }
+
+    
+});
+
+
+
 
 // ... (your existing code)
 
@@ -274,6 +346,8 @@ window.addEventListener("keyup", (event) => {
             break;
     }
 });
+
+
 
 
 gameLoop();
