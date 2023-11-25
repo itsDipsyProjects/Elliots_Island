@@ -87,8 +87,8 @@ h1{
 
 #test{
     margin-left: 10px;
-    min-width: 700px;
-    min-height: 700px;
+    width: 700px;
+    height: 700px;
     grid-column: 3/7;
     grid-row: 3/9;
     z-index: 100;
@@ -115,11 +115,14 @@ h1{
 
 
 
+
+
+
   @media (max-width: 2204px) {
 
     #test{
-        min-width: 600px;
-        min-height: 600px;
+        width: 600px;
+        height: 600px;
     }
 
     #introduction_text{
@@ -137,7 +140,7 @@ h1{
 
 
 
-
+  /*THIS here is the start of where my laptop witdth*/
 
 
   @media (max-width: 1942px) {
@@ -151,15 +154,15 @@ h1{
     }
 
     #test{
-        min-width: 500px;
-        min-height: 500px;
+        width: 400px;
+        height: 400px;
     }
 
     #introduction_text{
         width: 80%;
         grid-column: 8/12;
         grid-row: 4/9;
-        font-size: 55px;
+        font-size: 35px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: 800;
     }
@@ -168,10 +171,10 @@ h1{
 
   #my_work{
     background-color: #D9E7C8;
-        min-width: 100vw;
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 90px);
+    min-width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 90px);
   }
 
 
