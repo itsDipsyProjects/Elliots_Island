@@ -3,13 +3,11 @@ body{
     box-sizing: border-box;
 }
 
-section{
-    overflow-y:scroll ;
+#first_page_div{
     min-width: 100vw;
-    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 113px);
+    grid-template-rows: repeat(12, 120px);
 }
 
 #white_rec_side{
@@ -112,7 +110,13 @@ h1{
     -webkit-text-stroke: 1.5px black;
 }
 
+
+
+
+
+
   @media (max-width: 2204px) {
+
     #test{
         min-width: 600px;
         min-height: 600px;
@@ -129,7 +133,23 @@ h1{
   }
 
 
+
+
+
+
+
+
+
   @media (max-width: 1942px) {
+
+
+    #first_page_div{
+        min-width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 90px);
+    }
+
     #test{
         min-width: 500px;
         min-height: 500px;
@@ -148,5 +168,30 @@ h1{
 
   #my_work{
     background-color: #D9E7C8;
+        min-width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 90px);
   }
+
+
   
+
+  #one {
+        width: 500px;
+        height: 500px;
+
+        background-color: aqua;
+  }
+
+  #two {
+    
+  }
+
+  #three {
+    
+  }
+
+  #four {
+    
+  }
