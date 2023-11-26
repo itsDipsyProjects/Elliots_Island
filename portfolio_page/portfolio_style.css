@@ -145,6 +145,7 @@ h1{
 
   @media (max-width: 1942px) {
 
+    
 
     #first_page_div{
         min-width: 100vw;
@@ -239,33 +240,54 @@ h1{
 
 
 
+  #my_work_description_text{
+
+  }
+
 
   #my_work{
     background-color: #D9E7C8;
     min-width: 100vw;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 120px);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
 
+  .flex_container_my_work{
+    margin-top: 50px;
+    width: 50vw;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
   
 
-  #one {
-        width: 500px;
-        height: 500px;
 
-        background-color: rgb(150, 150, 150);
+  #one{
+    
+    width: 500px;
+    height: 500px;
   }
-
   #two {
-    
-  }
+    width: 400px;
+    height: 400px;
+    background-color: rgb(150, 150, 150);
+ }
 
-  #three {
-    
-  }
+ #three {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(150, 150, 150);
+ } 
 
-  #four {
-    
-  }
+ #four {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(150, 150, 150);
+ }
+
