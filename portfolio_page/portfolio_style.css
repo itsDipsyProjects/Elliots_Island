@@ -21,6 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden;
 }
 
 h1{
@@ -137,6 +138,47 @@ ul{
     position: relative;
 ;
 }
+
+
+@media screen and (max-width:2000px) {
+    #info_section p{
+        font-size: 120px;
+        margin-left: 90px;
+        
+    }
+    .intro_text_1{
+        margin-left: 100px;
+        width: 100vw;
+        height: 30%;
+        font-size: 250px;
+        color: rgb(255, 255, 255);
+        white-space: nowrap;
+        position: relative;
+    }
+
+    #picture_of_me{
+        margin-right: 100px;
+        width: 500px;
+        height: 400px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #picture_of_me > div{
+        
+        width: 250px;
+        height: 250px;
+        background-image: url("./assets/test.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+
 
 /*SECOND SECTION START ----------------------------------------------------------------------------------------------------*/
 
@@ -266,3 +308,7 @@ ul{
     height: 2px;
     background-color: rgb(193, 187, 187);
 }
+
+
+
+
