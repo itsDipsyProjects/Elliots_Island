@@ -1,28 +1,47 @@
-let intro_text = document.querySelector("#intro_text");
-let counter_down = 500;
+let the_ball = document.querySelector(".the_ball_what_do_i_do");
+let test1 = document.querySelector(".test");
+let distanceFactor = 10;
 
-function test() {
-  window.requestAnimationFrame(test);
-  console.log(counter_down)
-  if(counter_down !== -2000 && counter_down <= 0){
-    // Adjust the animation speed by changing the decrement value
-    counter_down = counter_down - 1.5; // or any other value based on your preference
-  
-    // Use units for the translate value (e.g., px)
-    intro_text.style.transform = `translateX(${counter_down}px)`;
+the_ball.addEventListener("mousemove", (event) => {    
+    let mouseX = event.clientX;
+    let mouseY = event.clientY;
 
-  }
+    let ballRect = the_ball.getBoundingClientRect();
 
-  if(counter_down <= -2000){
-    counter_down = 2500;
-  }
+    // Check if the mouse is inside the ball
+    if (mouseX >= ballRect.left && mouseX <= ballRect.right &&
+        mouseY >= ballRect.top && mouseY <= ballRect.bottom) {
 
-  if(counter_down <= 2500 && counter_down !== 0){
-    counter_down = counter_down - 1.5; // or any other value based on your preference
-  
-    // Use units for the translate value (e.g., px)
-    intro_text.style.transform = `translateX(${counter_down}px)`;
-  }
-}
+        let ballCenterX = ballRect.left + ballRect.width / 2;
+        let ballCenterY = ballRect.top + ballRect.height / 2;
 
-test();
+        let ballDeltaX = mouseX - ballCenterX;
+        let ballDeltaY = mouseY - ballCenterY;
+
+        let ballNewValueX = ballDeltaX / distanceFactor;
+        let ballNewValueY = ballDeltaY / distanceFactor;
+
+        // Apply transformations only if the mouse is inside the ball
+        the_ball.style.transform = `translate(${ballNewValueX}px, ${ballNewValueY}px)`;
+
+        // Calculate distance for test1
+        let elementRect = the_ball.getBoundingClientRect();
+        let elementCenterX = elementRect.left + elementRect.width / 2;
+        let elementCenterY = elementRect.top + elementRect.height / 2;
+
+        let deltaX = mouseX - elementCenterX;
+        let deltaY = mouseY - elementCenterY;
+
+        let new_value_x = deltaX / distanceFactor;
+        let new_value_y = deltaY / distanceFactor;
+
+        // Apply transformations only if the mouse is inside the ball
+        test1.style.transform = `translate(${new_value_x}px, ${new_value_y}px)`;
+    }
+});
+
+the_ball.addEventListener("click", (event) => {    
+    
+    window.location.href = "https://youtube.com"
+    
+});
