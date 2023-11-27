@@ -81,8 +81,9 @@ ul{
     height: 100%;
 
 }
+
 #info_section p{
-    font-size: 100px;
+    font-size: 150px;
     margin-left: 90px;
     
 }
@@ -108,7 +109,6 @@ ul{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 
 .intro_text_container{
     display: flex;
@@ -207,10 +207,58 @@ ul{
     justify-content: center;
     align-items: center;
     color: white;
+}
 
+#header_for_recent_work{
+    font-size: 20px;
+    margin-left: 255px;
+    align-self: start;
+    margin-bottom: 100px;
 }
 
 
+.pixel_game{
+    display: flex;
+    width: 80%;
+    height: 250px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#title_forwork{
+    font-size: 100px;
+}
+
+#description_what_it_was_for_job{
+    font-size: 20px;
+}
+
+
+.template1{
+    display: flex;
+    width: 80%;
+    height: 250px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.template2{
+    display: flex;
+    width: 80%;
+    height: 250px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.template3{
+    display: flex;
+    width: 80%;
+    height: 250px;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 .line{
