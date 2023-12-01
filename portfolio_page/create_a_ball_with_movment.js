@@ -1,10 +1,10 @@
 
-function init_ball_on_second_section(where_to_append){
+function init_ball_on_second_section(where_to_append, text_inside){
     let the_ball = document.createElement("div");
     the_ball.classList.add("the_ball_what_do_i_do");
 
     the_ball.innerHTML = `
-        <div class="test">About me</div>
+        <div class="test">${text_inside}</div>
     `;
     where_to_append.appendChild(the_ball)
     let test1 = document.querySelector(".test");
@@ -60,5 +60,6 @@ function init_ball_on_second_section(where_to_append){
     });
 }
 
+init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
 
 
