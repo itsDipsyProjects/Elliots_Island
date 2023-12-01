@@ -121,6 +121,8 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 40px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #bottom_row{
@@ -132,6 +134,8 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 40px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .box_with_video{
@@ -142,10 +146,14 @@ h1{
     height: 350px;
     background-color: rgb(172, 172, 172);
     transition-duration: 500ms;
+    overflow-y: hidden;
+    overflow-x: hidden;
     
 }
 
 .box_with_video:hover{
+    overflow-y: hidden;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
