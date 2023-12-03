@@ -21,7 +21,7 @@ body{
         color: rgb(224, 217, 217);
         width: 100vw;
         min-height: 100vh;
-        background-color: black;
+        background-color: rgb(178, 135, 135);
         overflow-x: hidden;
     }
     #vv{
@@ -397,7 +397,7 @@ body{
         color: rgb(224, 217, 217);
         width: 100vw;
         min-height: 100vh;
-        background-color: black;
+        background-color: rgb(178, 135, 135);
         overflow-x: hidden;
         font-family: pixel;
        
@@ -624,7 +624,7 @@ body{
     
     #first_section_in_third_section{
         display: flex;
-        width: 90%;
+        width: 70%;
         height: 500px;
         justify-content: space-around;
         align-items: center;
@@ -634,6 +634,12 @@ body{
         width: fit-content;
         height: fit-content;
     }
+
+    #svg_thing svg{
+        width: 500px;
+        height: 500px;
+    }
+
     
     #first_section_in_third_section_text{
         display: flex;
@@ -645,7 +651,8 @@ body{
     }
     
     #second_section_in_third_section_text{
-        width: 100%;
+        margin-top: 50px;
+        width: 75%;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -653,7 +660,7 @@ body{
     }
     
     #second_section_in_third_section_text p{
-        margin: 100px;
+       margin: 100px;
        font-size: 30px;
     }
     
@@ -661,7 +668,7 @@ body{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 100%;
+        width: 80%;
         height: fit-content;
         font-size: 30px;
     }
@@ -673,6 +680,11 @@ body{
     
     #svg_thing2{
         margin-bottom: 40px;
+    }
+
+    #svg_thing2 svg{
+        width: 500px;
+        height: 500px;
     }
     
     
@@ -760,7 +772,3 @@ body{
         
 }
 
-iframe{
-    width: 100vw;
-    height: 100vh;
-}

@@ -13,12 +13,12 @@ function handleScroll() {
 
   // Compare current and previous scroll positions
   if (scrollTop > lastScrollTop) {
-    top_row.style.transform = `translateX(${incrementor++}px)`;
-    bottom_row.style.transform = `translateX(${demencrator--}px)`;
+    top_row.style.transform = `translateX(${incrementor += 0.5}px)`;
+    bottom_row.style.transform = `translateX(${demencrator -= 0.5}px)`;
   } else if (scrollTop < lastScrollTop) {
     
-    top_row.style.transform = `translateX(${incrementor--}px)`;
-    bottom_row.style.transform = `translateX(${demencrator++}px)`;
+    top_row.style.transform = `translateX(${incrementor -= 0.5}px)`;
+    bottom_row.style.transform = `translateX(${demencrator += 0.5}px)`;
   }
 
   // Update the last scroll position
