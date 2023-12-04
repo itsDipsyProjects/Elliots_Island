@@ -440,6 +440,7 @@ body{
     }
     #outer_container{
         width: 100%;
+        height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -447,19 +448,17 @@ body{
     }
     #container_for_first_page_texts_and_picture{
         display: flex;
-        width: 100%;
-        justify-content: center;
+        width: fit-content;
+        height:fit-content;
         align-items: center;
     }
     
     #texts_in_intro{
-        width: 50%;
-        height: 1030px;
-        height: auto;
+        width: 1130px;
+        display: flex;
+        flex-direction: column;
         font-size: 120px;
     }
-    
-    
     
     h1{
         margin: 0;
@@ -471,8 +470,7 @@ body{
         display: flex;
         width: 100%;
         height: fit-content;
-        justify-content: start;
-        margin-left: 100px;
+        
         margin-top: 100px;
     }
     
@@ -482,15 +480,11 @@ body{
         height: fit-content;
         margin-top: 100px;
         margin-bottom: 100px;
-        margin-left: 100px;
     }
     
     #third_text{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        width: fit-content;
         margin-bottom: 100px;
-        margin-left: 20px;
         font-size: 120px;
     }
 
