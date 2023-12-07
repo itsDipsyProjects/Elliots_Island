@@ -122,17 +122,6 @@ body{
         font-size: 80px;
         flex-wrap: wrap;
     }
-
-    #the_earth_jpg{
-        display: none;
-        width: 500px;
-        height: 400px;
-        background-image: url("./assets/sr259d06f4a38aws3.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 20px;
-    }
     
     
     /*SECOND SECTION --------------------------------------------------------------------------------*/
@@ -380,7 +369,9 @@ body{
         width: 200px;
         height: 200px;
         border-radius: 100%;
-        background-color: rgb(233, 233, 233);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
     }
     
     #the_line{
@@ -400,23 +391,28 @@ body{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(107, 107, 107);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
-        transition: background-color 0.3s ease;
+        transition: font-size 0.3s ease;
         position: relative;
     }
     
     
     
     .the_ball_what_do_i_do:hover{
-        font-size: 25px;
+        font-size: 30px;
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(30, 110, 171);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
+
         display: flex;
         justify-content: center;
         align-items: center;
