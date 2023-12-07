@@ -1,3 +1,11 @@
+let the_stop_value = false;
+
+
+if(window.innerWidth <= 1104){
+  the_stop_value = true;
+}
+
+
 let top_row = document.querySelector("#top_row");
 let bottom_row = document.querySelector("#bottom_row");
 
@@ -46,6 +54,17 @@ console.log("hello");
 
 
 window.addEventListener("resize", (event) => {
+  
+  if(window.innerWidth <= 1104){
+    the_stop_value = true;
+    top_row.style.transform = `translate(0px)`;
+    bottom_row.style.transform = `translate(0px)`;
+  }
+  else if(window.innerWidth >= 1104){
+    the_stop_value = false;
+    window.addEventListener("scroll", handleScroll)
+  }
+
   console.log(window.innerWidth);
 
   if (window.innerWidth >= 1950 ) {
@@ -71,7 +90,14 @@ window.addEventListener("scroll", handleScroll)
 
 
 function handleScroll() {
- 
+  
+  console.log(the_stop_value);
+  if(the_stop_value === true){
+    window.removeEventListener("scroll", handleScroll);  
+    top_row.style.transform = `translateX(0px)`;
+    bottom_row.style.transform = `translateX(0px)`;
+  }
+
   console.log(incrementorB)
 
 
@@ -82,27 +108,41 @@ function handleScroll() {
   if (scrollTop > lastScrollTop) {
     top_row.style.transform = `translateX(${incrementor += 0.5}px)`;
     bottom_row.style.transform = `translateX(${demencrator -= 0.5}px)`;
-    background.style.backgroundPositionY = `${incrementorB -= 2}px`
-   
     if(incrementorB >= 0){
       incrementorB = 0;
       background.style.backgroundPositionY = `${incrementorB}`
     }
+    else{
+      background.style.backgroundPositionY = `${incrementorB -= 2}px`
+
+    }
+    
 
 
   } else if (scrollTop < lastScrollTop) {
     
     top_row.style.transform = `translateX(${incrementor -= 0.5}px)`;
     bottom_row.style.transform = `translateX(${demencrator += 0.5}px)`;
-    background.style.backgroundPositionY = `${incrementorB += 2}px`
-    
     if(incrementorB >= 0){
       incrementorB = 0;
       background.style.backgroundPositionY = `${incrementorB}`
     }
+    else{
+      background.style.backgroundPositionY = `${incrementorB += 2}px`
 
+    }
+    
+
+  }
+
+  console.log(the_stop_value);
+  if(the_stop_value === true){
+    window.removeEventListener("scroll", handleScroll);  
+    top_row.style.transform = `translateX(0px)`;
+    bottom_row.style.transform = `translateX(0px)`;
   }
 
   // Update the last scroll position
   lastScrollTop = scrollTop;
 }
+

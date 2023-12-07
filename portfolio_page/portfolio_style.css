@@ -70,23 +70,27 @@ body{
         height: fit-content;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
     }
     #container_for_first_page_texts_and_picture{
         width: 100%;
         display: flex;
+        flex-direction: column;
         width: fit-content;
         height:fit-content;
-        align-items: center;
+        align-items: start;
+        justify-content: start;
     }
     
     #texts_in_intro{
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        font-size: 90px;
+        align-items: start;
+        justify-content: start;
+        font-size: 80px;
+        margin-left: 100px;
     }
     
     h1{
@@ -114,7 +118,9 @@ body{
     #third_text{
         width: fit-content;
         margin-bottom: 100px;
-        font-size: 90px;
+        margin-left: 90px;
+        font-size: 80px;
+        flex-wrap: wrap;
     }
 
     #the_earth_jpg{
@@ -486,11 +492,12 @@ body{
         height: fit-content;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
     }
     #container_for_first_page_texts_and_picture{
         display: flex;
+        flex-direction: column;
         width: fit-content;
         height:fit-content;
         align-items: center;
@@ -500,20 +507,18 @@ body{
         width: 1130px;
         display: flex;
         flex-direction: column;
-        font-size: 120px;
+        font-size: 90px;
+        margin-left: 250px;
     }
     
     h1{
         margin: 0;
-    }
-    
-    
+    }    
     
     #first_text{
         display: flex;
         width: 100%;
         height: fit-content;
-        
         margin-top: 100px;
     }
     
@@ -528,20 +533,10 @@ body{
     #third_text{
         width: fit-content;
         margin-bottom: 100px;
-        font-size: 120px;
+        font-size: 90px;
+        margin-right: 150px;
     }
 
-    #the_earth_jpg{
-        display: none;
-        width: 500px;
-        height: 500px;
-        background-image: url("./assets/sr259d06f4a38aws3.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 20px;
-    }
-    
     
     /*SECOND SECTION --------------------------------------------------------------------------------*/
     
@@ -790,7 +785,10 @@ body{
         width: 200px;
         height: 200px;
         border-radius: 100%;
-        background-color: rgb(233, 233, 233);
+       
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
     }
     
     #the_line{
@@ -810,23 +808,30 @@ body{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(107, 107, 107);
+        background-color: rgb(158, 153, 153);
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
-        transition: background-color 0.3s ease;
+        transition: font-size 0.3s ease;
+        
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
         position: relative;
     }
     
     
     
     .the_ball_what_do_i_do:hover{
-        font-size: 25px;
+        font-size: 30px;
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(30, 110, 171);
+        
+        background-image: url("./assets/IMG_1548.jpg");
+        background-position: center;
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -838,7 +843,7 @@ body{
 }
 
 
-/*This is for the phone*/
+/*This is for the tablet*/
 
 @media screen and (max-width: 1334px) {
     body{
@@ -856,7 +861,7 @@ body{
         min-height: 100vh;
         background-image: url("./assets/Sprite-0003.jpg");
         background-repeat: no-repeat;
-        background-position-y: -50px;
+        background-position-y: -0px;
         background-size: cover;
         overflow-x: hidden;
         font-family: pixel;
@@ -902,8 +907,8 @@ body{
         height: fit-content;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
     }
     #container_for_first_page_texts_and_picture{
         width: 100%;
@@ -944,21 +949,14 @@ body{
     }
     
     #third_text{
+        margin: 0;
         width: fit-content;
         margin-bottom: 100px;
+        margin-left: 50px;
         font-size: 72px;
     }
 
-    #the_earth_jpg{
-        width: 400px;
-        height: 300px;
-        background-image: url("./assets/sr259d06f4a38aws3.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 20px;
-    }
-    
+  
     
     /*SECOND SECTION --------------------------------------------------------------------------------*/
     
@@ -1116,8 +1114,8 @@ body{
     }
 
     #svg_thing svg{
-        width: 400px;
-        height: 400px;
+        width: 350px;
+        height: 350px;
     }
 
     
@@ -1125,14 +1123,14 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 700px;
+        width: 550px;
         height: 200px;
         font-size: 30px;
     }
     
     #second_section_in_third_section_text{
         margin-top: 50px;
-        width: 90%;
+        width: 93%;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -1174,8 +1172,10 @@ body{
         width: 100vw;
         min-height: 90vh;
         display: flex;
-        
+        align-items: start;
         flex-direction: column;
+        align-items: start;
+        justify-content: start;
         background-color: black;
         color: white;
         font-size: 80px;
@@ -1183,19 +1183,23 @@ body{
     
     
     #first_section_in_fourth_section{
+        margin: 0;
+        margin-top: 200px;
         width: 70%;
         display: flex;
         flex-direction: column;
         height: fit-content;
-        align-items: start;
-        margin-left: 300px;
-        margin-top: 200px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-left: 200px;
     }
     
     #container_first{
         width: 100%;
+        font-size: 35px;
         display: flex;
         height: fit-content;
+        align-items: center;
         gap: 40px;
         justify-content: start;
     }
@@ -1206,6 +1210,9 @@ body{
         height: 200px;
         border-radius: 100%;
         background-color: rgb(233, 233, 233);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
+        align-self: flex-end;
     }
     
     #the_line{
@@ -1219,13 +1226,15 @@ body{
     
     .the_ball_what_do_i_do{
         z-index: 100;
-        margin-right: 100px;
+        margin: 0;
+        margin-top: 100px;
         align-self: flex-end;
         font-size: 25px;
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(107, 107, 107);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1241,7 +1250,8 @@ body{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-color:rgb(30, 110, 171);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1250,6 +1260,432 @@ body{
         
     }
 }
+
+
+/*This is for the phone*/
+@media screen and (max-width: 1104px) {
+    body{
+        margin: 0;
+        font-family: pixel;
+        cursor: url("./assets/playerDown.png"), auto;
+    }
+
+    
+    
+    #first_section{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(255, 255, 255);
+        width: 100vw;
+        min-height: 100vh;
+        background-image: url("./assets/Sprite-0003.jpg");
+        background-repeat: no-repeat;
+        background-position-y: -0px;
+        background-size: cover;
+        overflow-x: hidden;
+        font-family: pixel;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+    header{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: sticky;
+    }
+    
+    
+    nav{
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #logo_name{
+        font-size: 25px;
+    }
+    
+    ul{
+        width: 65%;
+        display: flex;
+        margin: 0;
+        justify-content: space-around;
+        list-style: none;
+        font-size: 20px;
+    }
+    #outer_container{
+        width: 88%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+    #container_for_first_page_texts_and_picture{
+        width: 100%;
+        display: flex;
+        width: fit-content;
+        height:fit-content;
+        align-items: center;
+    }
+    
+    #texts_in_intro{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 60px;
+    }
+    
+    h1{
+        margin: 0;
+    }
+    
+    
+    
+    #first_text{
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        
+        margin-top: 100px;
+    }
+    
+    #second_text{
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    
+    #third_text{
+        margin: 0;
+        width: fit-content;
+        margin-bottom: 100px;
+        margin-left: 50px;
+        font-size: 60px;
+    }
+
+  
+    
+    /*SECOND SECTION --------------------------------------------------------------------------------*/
+    
+    #second_section{
+        overflow-x: hidden;
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    #second_section h1{
+        font-size: 60px;
+        margin-top: 160px;
+        margin-bottom: 160px;
+        font-family: pixel;
+    }
+    
+    #work_videos_container{
+       overflow-x: hidden;
+       min-width: 100%;
+       min-height: 800px;
+       display: flex;
+       flex-direction: column;
+    }
+    
+    #top_row{
+        overflow-x: hidden;
+        min-width: 100%;
+        height: 1500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+    
+    #bottom_row{
+        margin-top: 40px;
+        overflow-x: hidden;
+        min-width: 100%;
+        height: 1200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+    
+    .box_with_video{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 350px;
+        background-color: rgb(172, 172, 172);
+        transition-duration: 500ms;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        
+    }
+    
+    .box_with_video:hover{
+        overflow-y: hidden;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 560px;
+        height: 450px;
+        background-color: rgb(172, 172, 172);
+        
+    }
+    
+    #image_1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 350px;
+        
+        background-image: url("https://dennissnellenberg.com/assets/img/home-item-3.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    #image_2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 350px;
+        
+        background-image: url("https://dennissnellenberg.com/assets/img/home-item-8.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    #image_3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 350px;
+        
+        background-image: url("https://dennissnellenberg.com/assets/img/home-item-1.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    video{
+        width: 400px;
+        height: 400px;
+    }
+    
+    /*THIS IS THE THIRD SECTION ---------------------------------------------------------------------------------------------------------------------*/
+    
+    #third_section{
+        margin-top: 200px;
+        overflow-x: hidden;
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        font-family: pixel;
+    }
+    
+    #third_section h1{
+        margin-top: 50px;
+        margin-bottom: 100px;
+        font-size: 60px;
+        font-family: pixel;
+    }
+    
+    #first_section_in_third_section{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        height: 500px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #svg_thing{
+        margin-bottom: 100px;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #svg_thing svg{
+        width: 350px;
+        height: 350px;
+    }
+
+    
+    #first_section_in_third_section_text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 550px;
+        height: 200px;
+        font-size: 25px;
+    }
+    
+    #second_section_in_third_section_text{
+        margin-top: 100px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #second_section_in_third_section_text p{
+       margin: 100px;
+       font-size: 25px;
+    }
+    
+    #thrid_section_in_third_section_text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 85%;
+        height: fit-content;
+        font-size: 25px;
+    }
+    
+    #thrid_section_in_third_section_text p{
+    
+        width: 80%;
+    }
+    
+    #svg_thing2{
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+
+    #svg_thing2 svg{
+        width: 400px;
+        height: 400px;
+    }
+    /*THIS IS THE FOURTH SECTION ----------------------------------------------------------------------------------------*/
+    
+    #fourth_section{
+        margin: 0;
+        margin-top: 200px;
+        overflow-x: hidden;
+        width: 100vw;
+        min-height: 90vh;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        background-color: black;
+        color: white;
+        font-size: 50px;
+    }
+    
+    
+    #first_section_in_fourth_section{
+        margin: 0px;
+        margin-top: 200px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-left: 200px;
+    }
+    
+    #container_first{
+        width: 100%;
+        font-size: 35px;
+        display: flex;
+        height: fit-content;
+        align-items: center;
+        gap: 40px;
+        justify-content: start;
+    }
+    
+    
+    #picture_of_me{
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        background-color: rgb(233, 233, 233);
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
+        align-self: flex-end;
+    }
+    
+    #the_line{
+        align-self: center;
+        width: 80%;
+        height: 5px;
+        background-color: gray;  
+        position: relative;
+        bottom: 120px;  
+    }
+    
+    .the_ball_what_do_i_do{
+        z-index: 100;
+        margin: 0;
+        margin-top: 100px;
+        align-self: flex-end;
+        font-size: 25px;
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: background-color 0.3s ease;
+        position: relative;
+    }
+    
+    
+    
+    .the_ball_what_do_i_do:hover{
+        font-size: 25px;
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+        background-image: url("./assets/IMG_1548.jpg");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        
+    }
+}
+
 
 
 
