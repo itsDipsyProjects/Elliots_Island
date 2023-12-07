@@ -22,7 +22,10 @@ body{
         color: rgb(255, 255, 255);
         width: 100vw;
         min-height: 100vh;
-        background-color: rgb(178, 135, 135);
+        background-image: url("./assets/Sprite-0003.jpg");
+        background-repeat: no-repeat;
+        background-position-y: -180px;
+        background-size: cover;
         overflow-x: hidden;
         font-family: pixel;
         display: flex;
@@ -115,6 +118,7 @@ body{
     }
 
     #the_earth_jpg{
+        display: none;
         width: 500px;
         height: 400px;
         background-image: url("./assets/sr259d06f4a38aws3.png");
@@ -433,7 +437,10 @@ body{
         color: rgb(255, 255, 255);
         width: 100vw;
         min-height: 100vh;
-        background-color: rgb(178, 135, 135);
+        background-image: url("./assets/Sprite-0003.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-y: -500px;
         overflow-x: hidden;
         font-family: pixel;
         display: flex;
@@ -525,6 +532,7 @@ body{
     }
 
     #the_earth_jpg{
+        display: none;
         width: 500px;
         height: 500px;
         background-image: url("./assets/sr259d06f4a38aws3.png");
@@ -846,7 +854,10 @@ body{
         color: rgb(255, 255, 255);
         width: 100vw;
         min-height: 100vh;
-        background-color: rgb(178, 135, 135);
+        background-image: url("./assets/Sprite-0003.jpg");
+        background-repeat: no-repeat;
+        background-position-y: -50px;
+        background-size: cover;
         overflow-x: hidden;
         font-family: pixel;
         display: flex;
