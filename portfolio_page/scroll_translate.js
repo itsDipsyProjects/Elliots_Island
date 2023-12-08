@@ -113,7 +113,7 @@ function handleScroll() {
       background.style.backgroundPositionY = `${incrementorB}`
     }
     else{
-      background.style.backgroundPositionY = `${incrementorB -= 2}px`
+      background.style.backgroundPositionY = `${incrementorB -= 3}px`
 
     }
     
@@ -128,7 +128,7 @@ function handleScroll() {
       background.style.backgroundPositionY = `${incrementorB}`
     }
     else{
-      background.style.backgroundPositionY = `${incrementorB += 2}px`
+      background.style.backgroundPositionY = `${incrementorB += 3}px`
 
     }
     
