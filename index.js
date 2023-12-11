@@ -81,8 +81,10 @@ let player_cordinates = {
 }
 
 let backgroundImage_cordinates = {
-    x: -1500,
-    y: -1200,
+    posistion: {
+        x: -1500,
+        y: -1200,
+    }
 }
 
 let player1 = new player({posistion: {
@@ -142,71 +144,47 @@ window.addEventListener("keyup", (event) => {
 
 let collisionDection = false;
 
-fix_collision();
-let movables = [backgroundImage_cordinates, ...boundaries]
-console.log(movables);
-
 let lastkeyPress =  "";
 
-let collisionDetectedAxis = {
-    xplus: false,
-    xminus: false,
-    yplus: false,
-    yminus: false,
-}
-
 let test_boundary = new Boundary({posistion: {x: 500, y: 500}});
+let movables = [backgroundImage_cordinates, test_boundary];
+
 function gameLoop(){
     requestAnimationFrame(gameLoop);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(backgroundImage, backgroundImage_cordinates.x, backgroundImage_cordinates.y);
+    ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     
     test_boundary.draw();
     
-    console.log(collisionDetectedAxis);
-    if((keys_pressed.w && keys_pressed.s) || (keys_pressed.s && keys_pressed.w) === false)
-    {
+
+    
         
-        if (keys_pressed.w) {
-            movables.forEach((movable) => {
-                movable.y += 3;
-            });
-        }
-    
-        if (keys_pressed.s) {
-            console.log("true")
-            movables.forEach((movable) => {
-                movable.y -= 3;
-            });
-        }
-
-        if (keys_pressed.a) {
-            console.log("true")
-            movables.forEach((movable) => {
-                movable.x += 3;
-            });
-        }
-
-        if (keys_pressed.d) {
-            console.log("true")
-            movables.forEach((movable) => {
-                movable.x -= 3;
-            });
-        }
+    if (keys_pressed.w) {
+        movables.forEach((movable) => {
+            movable.posistion.y+= 3;
+        });
     }
 
-    
-    
+    if (keys_pressed.s) {
+        
+        movables.forEach((movable) => {
+            movable.posistion.y -= 3;
+        });
+    }
 
+    if (keys_pressed.a) {
+        movables.forEach((movable) => {
+            movable.posistion.x += 3;
+        });
+    }
+
+    if (keys_pressed.d) {
+        movables.forEach((movable) => {
+            movable.posistion.x -= 3;
+        });
+    }
+    
     player1.draw();
-    collisionDection = false;
-
-    if(collisionDection === false){
-        collisionDetectedAxis.yplus = false;
-        collisionDetectedAxis.yminus = false;
-        collisionDetectedAxis.xplus = false;
-        collisionDetectedAxis.xminus = false;
-    }
 }
 
 gameLoop();
