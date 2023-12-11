@@ -7,7 +7,7 @@ let ctx = canvas.getContext("2d");
 let boundaries = [];
 
 class player{
-    constructor(posistion){
+    constructor({posistion}){
         this.posistion = posistion;
         this.width = 60
         this.height = 60;
@@ -21,17 +21,16 @@ class player{
 }
 
 
-class Boundary{
-    constructor(x,y){
-        this.x = x;
-        this.y = y
+class Boundary {
+    constructor({posistion}){
+        this.posistion = posistion;
         this.width = 60;
         this.height = 60;
     }
 
     draw(){
         ctx.fillStyle = "red";
-        ctx.fillRect(this.x, this.y , this.width, this.height);
+        ctx.fillRect(this.posistion.x, this.posistion.y , this.width, this.height);
     }
 }
 
@@ -55,18 +54,20 @@ function fix_collision(){
 
 
     const offset = {
-        x: -1400,
-        y: -1100,
+        x: -1530,
+        y: -1220,
     }
     
     mapArr_2D.forEach((row, i) => {
         row.forEach((symbol, j) => { 
             if (symbol === 58) {
                 boundaries.push(
-                    new Boundary(
-                        j * 60 + offset.x,
-                        i * 60 + offset.y,
-                    )
+                    new Boundary({
+                        posistion:{
+                            x: j * 65 + offset.x,
+                            y: i * 65 + offset.y,
+                        },
+                    })
                 )
             }
         });
@@ -84,7 +85,10 @@ let backgroundImage_cordinates = {
     y: -1200,
 }
 
-let player1 = new player(player_cordinates)
+let player1 = new player({posistion: {
+    x: player_cordinates.x,
+    y: player_cordinates.y,
+}})
 
 let keys_pressed = {
     w: false,
@@ -97,16 +101,19 @@ window.addEventListener("keydown", (event) => {
     switch(event.key){
         case "w":
             keys_pressed.w = true;
-            
+            lastkeyPress = "w";
         break;
         case "s":
             keys_pressed.s = true;
+            lastkeyPress = "s";
         break;
         case "a":
             keys_pressed.a = true;
+            lastkeyPress = "a";
         break;
         case "d":
             keys_pressed.d = true;
+            lastkeyPress = "d";
         break;
     }
 })
@@ -116,65 +123,90 @@ window.addEventListener("keyup", (event) => {
     switch(event.key){
         case "w":
             keys_pressed.w = false;
+           
         break;
         case "s":
             keys_pressed.s = false;
+            
         break;
         case "a":
             keys_pressed.a = false;
+            
         break;
         case "d":
             keys_pressed.d = false;
+            
         break;
     }
 })
 
+let collisionDection = false;
 
 fix_collision();
 let movables = [backgroundImage_cordinates, ...boundaries]
 console.log(movables);
 
+let lastkeyPress =  "";
 
+let collisionDetectedAxis = {
+    xplus: false,
+    xminus: false,
+    yplus: false,
+    yminus: false,
+}
 
-
+let test_boundary = new Boundary({posistion: {x: 500, y: 500}});
 function gameLoop(){
     requestAnimationFrame(gameLoop);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.x, backgroundImage_cordinates.y);
-    boundaries.forEach((a_boundary) =>{
-        a_boundary.draw();
-    })
+    
+    test_boundary.draw();
+    
+    console.log(collisionDetectedAxis);
+    if((keys_pressed.w && keys_pressed.s) || (keys_pressed.s && keys_pressed.w) === false)
+    {
+        
+        if (keys_pressed.w) {
+            movables.forEach((movable) => {
+                movable.y += 3;
+            });
+        }
+    
+        if (keys_pressed.s) {
+            console.log("true")
+            movables.forEach((movable) => {
+                movable.y -= 3;
+            });
+        }
+
+        if (keys_pressed.a) {
+            console.log("true")
+            movables.forEach((movable) => {
+                movable.x += 3;
+            });
+        }
+
+        if (keys_pressed.d) {
+            console.log("true")
+            movables.forEach((movable) => {
+                movable.x -= 3;
+            });
+        }
+    }
+
+    
     
 
-
-    if(keys_pressed.w){
-        movables.forEach((movable) => {
-            movable.y += 3;
-        })
-        
-    }
-
-    if(keys_pressed.s){
-        movables.forEach((movable) => {
-            movable.y -= 3;
-        })
-    }
-
-
-    if(keys_pressed.a){
-        movables.forEach((movable) => {
-            movable.x += 3;
-        })
-        
-    }
-
-    if(keys_pressed.d){
-        movables.forEach((movable) => {
-            movable.x -= 3;
-        })
-    }
-
     player1.draw();
+    collisionDection = false;
+
+    if(collisionDection === false){
+        collisionDetectedAxis.yplus = false;
+        collisionDetectedAxis.yminus = false;
+        collisionDetectedAxis.xplus = false;
+        collisionDetectedAxis.xminus = false;
+    }
 }
 
 gameLoop();
