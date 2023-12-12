@@ -146,42 +146,137 @@ let collisionDection = false;
 
 let lastkeyPress =  "";
 
-let test_boundary = new Boundary({posistion: {x: 500, y: 500}});
-let movables = [backgroundImage_cordinates, test_boundary];
+let rectangle2 = new Boundary({posistion: {x: 500, y: 500}});
+
+
+
+function rectangularCollision({rectangle1, rectangle2})
+{
+    return(
+        rectangle1.posistion.x + rectangle1.width >= rectangle2.posistion.x  &&
+        rectangle1.posistion.x <= rectangle2.posistion.x + rectangle2.width &&
+        rectangle1.posistion.y <= rectangle2.posistion.y + rectangle2.height &&
+        rectangle1.posistion.y + rectangle1.height >= rectangle2.posistion.y
+    )
+}
+    
+fix_collision();
+let movables = [backgroundImage_cordinates, ...boundaries];
+
+console.log(boundaries);
+
 
 function gameLoop(){
     requestAnimationFrame(gameLoop);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
+    let moving = true;
     
-    test_boundary.draw();
     
-
+    // This is the collisionDectection
+    
+    
     
         
     if (keys_pressed.w) {
-        movables.forEach((movable) => {
-            movable.posistion.y+= 3;
-        });
+        for (let i = 0; i < boundaries.length; i++) {
+            let boundary = boundaries[i];
+            
+            if(rectangularCollision({
+                rectangle1: player1,
+                rectangle2: {...boundary, posistion: {
+                    x:boundary.posistion.x,
+                    y:boundary.posistion.y + 3
+                }},
+            })){
+                console.log("colliding");
+                moving = false;
+                break;
+            }
+           
+            
+        }
+        if(moving){
+            movables.forEach((movable) => {
+                movable.posistion.y += 3;
+            });
+        }
     }
 
     if (keys_pressed.s) {
         
-        movables.forEach((movable) => {
-            movable.posistion.y -= 3;
-        });
+        for (let i = 0; i < boundaries.length; i++) {
+            let boundary = boundaries[i];
+            
+            if(rectangularCollision({
+                rectangle1: player1,
+                rectangle2: {...boundary, posistion: {
+                    x:boundary.posistion.x,
+                    y:boundary.posistion.y - 3
+                }},
+            })){
+                console.log("colliding");
+                moving = false;
+                break;
+            }
+           
+            
+        }
+        if(moving){
+            movables.forEach((movable) => {
+                movable.posistion.y -= 3;
+            });
+        }
     }
 
     if (keys_pressed.a) {
-        movables.forEach((movable) => {
-            movable.posistion.x += 3;
-        });
+        for (let i = 0; i < boundaries.length; i++) {
+            let boundary = boundaries[i];
+            
+            if(rectangularCollision({
+                rectangle1: player1,
+                rectangle2: {...boundary, posistion: {
+                    x:boundary.posistion.x + 3,
+                    y:boundary.posistion.y,
+                }},
+            })){
+                console.log("colliding");
+                moving = false;
+                break;
+            }
+           
+            
+        }
+        if(moving){
+            movables.forEach((movable) => {
+                movable.posistion.x += 3;
+            });
+        }
     }
 
     if (keys_pressed.d) {
-        movables.forEach((movable) => {
-            movable.posistion.x -= 3;
-        });
+        for (let i = 0; i < boundaries.length; i++) {
+            let boundary = boundaries[i];
+            
+            if(rectangularCollision({
+                rectangle1: player1,
+                rectangle2: {...boundary, posistion: {
+                    x:boundary.posistion.x - 3,
+                    y:boundary.posistion.y,
+                }},
+            })){
+                console.log("colliding");
+                moving = false;
+                break;
+            }
+           
+            
+        }
+        if(moving){
+            movables.forEach((movable) => {
+                movable.posistion.x -= 3;
+            });
+        }
     }
     
     player1.draw();
