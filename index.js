@@ -89,8 +89,8 @@ function fix_collision(the_mapArr_from_tiled, which_is_it){
     
     
         const offset = {
-            x: -1480,
-            y: -970,
+            x: -1650,
+            y: -1325,
         }
         
         mapArr_2D.forEach((row, i) => {
@@ -201,8 +201,9 @@ function rectangularCollision({rectangle1, rectangle2})
 
 let movables = [backgroundImage_cordinates, ...boundaries, test];
 
-
+//VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
+
 function gameLoop(){
     requestAnimationFrame(gameLoop);
 
@@ -243,8 +244,8 @@ function gameLoop(){
     if (game_seq_counter === 3) {
         backgroundImage_cordinates = {
             posistion: {
-                x: -1490,
-                y: -980,
+                x: -1660,
+                y: -1320,
             }
         }
         movables = [backgroundImage_cordinates, ...boundaries];
@@ -254,14 +255,6 @@ function gameLoop(){
     
     
 
-    boundaries.forEach((a_boundary) => {
-        a_boundary.draw("purple");
-    })
-    
-
-
-    // This is the collisionDectection
-    
     
     
         
