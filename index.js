@@ -41,36 +41,74 @@ let backgroundImage = new Image();
 backgroundImage.src = "./assets/realrealrealTiledMap.png";
 
 // draws out collision blocks
-function fix_collision(){    
+function fix_collision(the_mapArr_from_tiled, which_is_it){    
     
-    let mapArr_2D = [];
-    
-    for (let i = 0; i < mapArr.length; i += 70) {
-        let sliced_part = mapArr.slice(i, i + 70);
-        mapArr_2D.push(sliced_part);
-    }
-
-
-
-    const offset = {
-        x: -1250,
-        y: -870,
-    }
-    
-    mapArr_2D.forEach((row, i) => {
-        row.forEach((symbol, j) => { 
-            if (symbol === 1025) {
-                boundaries.push(
-                    new Boundary({
-                        posistion:{
-                            x: j * 48 + offset.x,
-                            y: i * 48 + offset.y,
-                        },
-                    })
-                )
+    if(which_is_it === "outside"){
+        
+            let mapArr_2D = [];
+            
+            for (let i = 0; i < the_mapArr_from_tiled.length; i += 70) {
+                let sliced_part = the_mapArr_from_tiled.slice(i, i + 70);
+                mapArr_2D.push(sliced_part);
             }
+        
+        
+        
+            const offset = {
+                x: -1250,
+                y: -870,
+            }
+            
+            mapArr_2D.forEach((row, i) => {
+                row.forEach((symbol, j) => { 
+                    if (symbol === 1025 || symbol === 627) {
+                        boundaries.push(
+                            new Boundary({
+                                posistion:{
+                                    x: j * 48 + offset.x,
+                                    y: i * 48 + offset.y,
+                                },
+                            })
+                        )
+                    }
+                });
+            });
+
+    }
+
+
+    if(which_is_it === "inside1"){
+        
+        let mapArr_2D = [];
+        
+        for (let i = 0; i < the_mapArr_from_tiled.length; i += 70) {
+            let sliced_part = the_mapArr_from_tiled.slice(i, i + 70);
+            mapArr_2D.push(sliced_part);
+        }
+    
+    
+    
+        const offset = {
+            x: -1480,
+            y: -970,
+        }
+        
+        mapArr_2D.forEach((row, i) => {
+            row.forEach((symbol, j) => { 
+                if (symbol === 1025 || symbol === 627) {
+                    boundaries.push(
+                        new Boundary({
+                            posistion:{
+                                x: j * 64 + offset.x,
+                                y: i * 64 + offset.y,
+                            },
+                        })
+                    )
+                }
+            });
         });
-    });
+
+}
     
 }
 
@@ -145,7 +183,7 @@ let collisionDection = false;
 
 let lastkeyPress =  "";
 
-let test = new Boundary({posistion: {x: 300, y: 200}});
+let test = new Boundary({posistion: {x: 550, y: 270}});
 
 
 
@@ -159,28 +197,68 @@ function rectangularCollision({rectangle1, rectangle2})
     )
 }
 
-fix_collision();
+
+
 let movables = [backgroundImage_cordinates, ...boundaries, test];
 
-console.log(boundaries);
 
-
+let game_seq_counter = 0;
 function gameLoop(){
     requestAnimationFrame(gameLoop);
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     let moving = true;
+   
+    if(game_seq_counter === 1){
+        test.draw("red");
+        if(rectangularCollision({rectangle1: player1, rectangle2:test})){
+            console.log("collision with test")
+            document.body.style.backgroundColor = "white";
+            game_seq_counter = 2;
+        }
+    }
+    
+    if(game_seq_counter === 0){
+        fix_collision(mapArr, "outside");
+        movables = [backgroundImage_cordinates, ...boundaries, test]
+        game_seq_counter = 1;
+    }
+
+    if (game_seq_counter === 2) {
+        // Clear the boundaries array
+        boundaries.splice(0, boundaries.length);
+    
+        // Call fix_collision to add elements to the boundaries array
+        fix_collision(mapArr2, "inside1");
+        backgroundImage.src = "./assets/houseMap.png"
+        console.log(boundaries);
+        
+        // Set movables with new elements
+        movables = [backgroundImage_cordinates, ...boundaries];
+        game_seq_counter = 3;
+    }
+
+    
+    if (game_seq_counter === 3) {
+        backgroundImage_cordinates = {
+            posistion: {
+                x: -1490,
+                y: -980,
+            }
+        }
+        movables = [backgroundImage_cordinates, ...boundaries];
+        game_seq_counter = 4;
+    }
+    
+    
+    
+
     boundaries.forEach((a_boundary) => {
         a_boundary.draw("purple");
     })
     
-    test.draw("red");
-    
 
-    if(rectangularCollision({rectangle1: player1, rectangle2:test})){
-        console.log("collision with test")
-        document.body.style.backgroundColor = "white";
-    }
 
     // This is the collisionDectection
     
