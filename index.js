@@ -1,5 +1,4 @@
 
-
 const canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
 
@@ -9,8 +8,8 @@ let boundaries = [];
 class player{
     constructor({posistion}){
         this.posistion = posistion;
-        this.width = 60
-        this.height = 60;
+        this.width = 48
+        this.height = 48;
     }
 
     
@@ -24,12 +23,12 @@ class player{
 class Boundary {
     constructor({posistion}){
         this.posistion = posistion;
-        this.width = 60;
-        this.height = 60;
+        this.width = 48;
+        this.height = 48;
     }
 
-    draw(){
-        ctx.fillStyle = "red";
+    draw(color){
+        ctx.fillStyle = `${color}`;
         ctx.fillRect(this.posistion.x, this.posistion.y , this.width, this.height);
     }
 }
@@ -39,7 +38,7 @@ canvas.height = 1000;
 // Draw background
 
 let backgroundImage = new Image();
-backgroundImage.src = "./test.png";
+backgroundImage.src = "./assets/realrealrealTiledMap.png";
 
 // draws out collision blocks
 function fix_collision(){    
@@ -54,18 +53,18 @@ function fix_collision(){
 
 
     const offset = {
-        x: -1530,
-        y: -1220,
+        x: -1250,
+        y: -870,
     }
     
     mapArr_2D.forEach((row, i) => {
         row.forEach((symbol, j) => { 
-            if (symbol === 58) {
+            if (symbol === 1025) {
                 boundaries.push(
                     new Boundary({
                         posistion:{
-                            x: j * 65 + offset.x,
-                            y: i * 65 + offset.y,
+                            x: j * 48 + offset.x,
+                            y: i * 48 + offset.y,
                         },
                     })
                 )
@@ -77,13 +76,13 @@ function fix_collision(){
 
 let player_cordinates = {
     x: 580,
-    y: 540,
+    y: 570,
 }
 
 let backgroundImage_cordinates = {
     posistion: {
-        x: -1500,
-        y: -1200,
+        x: -1250,
+        y: -880,
     }
 }
 
@@ -146,7 +145,7 @@ let collisionDection = false;
 
 let lastkeyPress =  "";
 
-let rectangle2 = new Boundary({posistion: {x: 500, y: 500}});
+let test = new Boundary({posistion: {x: 300, y: 200}});
 
 
 
@@ -159,9 +158,9 @@ function rectangularCollision({rectangle1, rectangle2})
         rectangle1.posistion.y + rectangle1.height >= rectangle2.posistion.y
     )
 }
-    
+
 fix_collision();
-let movables = [backgroundImage_cordinates, ...boundaries];
+let movables = [backgroundImage_cordinates, ...boundaries, test];
 
 console.log(boundaries);
 
@@ -171,8 +170,18 @@ function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     let moving = true;
+    boundaries.forEach((a_boundary) => {
+        a_boundary.draw("purple");
+    })
     
+    test.draw("red");
     
+
+    if(rectangularCollision({rectangle1: player1, rectangle2:test})){
+        console.log("collision with test")
+        document.body.style.backgroundColor = "white";
+    }
+
     // This is the collisionDectection
     
     
