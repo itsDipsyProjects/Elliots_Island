@@ -108,8 +108,40 @@ function fix_collision(the_mapArr_from_tiled, which_is_it){
             });
         });
 
-}
+    }
     
+    if(which_is_it === "uppstairs"){
+        
+        let mapArr_2D = [];
+        
+        for (let i = 0; i < the_mapArr_from_tiled.length; i += 70) {
+            let sliced_part = the_mapArr_from_tiled.slice(i, i + 70);
+            mapArr_2D.push(sliced_part);
+        }
+    
+    
+    
+        const offset = {
+            x: -1050,
+            y: -1000,
+        }
+        
+        mapArr_2D.forEach((row, i) => {
+            row.forEach((symbol, j) => { 
+                if (symbol === 1025 || symbol === 627 || symbol === 529 ) {
+                    boundaries.push(
+                        new Boundary({
+                            posistion:{
+                                x: j * 64 + offset.x,
+                                y: i * 64 + offset.y,
+                            },
+                        })
+                    )
+                }
+            });
+        });
+
+    }
 }
 
 let player_cordinates = {
@@ -185,7 +217,7 @@ let lastkeyPress =  "";
 
 let enter_inside = new Boundary({posistion: {x: 550, y: 270}});
 let enter_upstairs = new Boundary({posistion: {x: 880, y: -190}});
-let enter_computer = new Boundary({posistion: {x: 0, y: 0}});
+let enter_computer = new Boundary({posistion: {x: 800, y: 100}});
 
 let enter_rects = [];
 enter_rects[0] = enter_inside;
@@ -267,13 +299,31 @@ function gameLoop(){
         enter_rects[1].draw();
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[1]})){
             console.log("collision with enter_rects2")
+            boundaries.splice(0, boundaries.length)
+            fix_collision(mapArr3, "uppstairs");
             game_seq_counter = 5
         }
     }
 
     if(game_seq_counter === 5){
+        backgroundImage_cordinates = {
+            posistion: {
+                x: -1070,
+                y: -1000,
+            }
+        }
+        backgroundImage.src = "./assets/uppstairs.png"
+        game_seq_counter = 6;
+    }
+
+    if(game_seq_counter === 6){
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[2]];
-       
+
+        enter_rects[2].draw();
+        if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[2]})){
+            window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+            
+        }
     }
 
 
@@ -382,11 +432,6 @@ function gameLoop(){
         }
     }
     
-
-    
-    boundaries.forEach((a_boundary) => {
-        a_boundary.draw("red");
-    })
     
     player1.draw("blue");
 }
