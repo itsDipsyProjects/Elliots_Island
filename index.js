@@ -38,7 +38,7 @@ canvas.height = 1000;
 // Draw background
 
 let backgroundImage = new Image();
-backgroundImage.src = "./assets/realrealrealTiledMap.png";
+backgroundImage.src = "./assets/outside.png";
 
 // draws out collision blocks
 function fix_collision(the_mapArr_from_tiled, which_is_it){    
@@ -183,9 +183,14 @@ let collisionDection = false;
 
 let lastkeyPress =  "";
 
-let test = new Boundary({posistion: {x: 550, y: 270}});
+let enter_inside = new Boundary({posistion: {x: 550, y: 270}});
+let enter_upstairs = new Boundary({posistion: {x: 880, y: -190}});
+let enter_computer = new Boundary({posistion: {x: 0, y: 0}});
 
-
+let enter_rects = [];
+enter_rects[0] = enter_inside;
+enter_rects[1] = enter_upstairs;
+enter_rects[2] = enter_computer;
 
 function rectangularCollision({rectangle1, rectangle2})
 {
@@ -199,10 +204,11 @@ function rectangularCollision({rectangle1, rectangle2})
 
 
 
-let movables = [backgroundImage_cordinates, ...boundaries, test];
+let movables = [backgroundImage_cordinates, ...boundaries, enter_inside];
 
 //VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
+
 
 function gameLoop(){
     requestAnimationFrame(gameLoop);
@@ -212,17 +218,18 @@ function gameLoop(){
     let moving = true;
    
     if(game_seq_counter === 1){
-        test.draw("red");
-        if(rectangularCollision({rectangle1: player1, rectangle2:test})){
+        enter_rects[0].draw("yellow");
+        if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[0]})){
             console.log("collision with test")
-            document.body.style.backgroundColor = "white";
+            enter_rects.slice(0,1);
+            console.log("hello");
             game_seq_counter = 2;
         }
     }
     
     if(game_seq_counter === 0){
         fix_collision(mapArr, "outside");
-        movables = [backgroundImage_cordinates, ...boundaries, test]
+        movables = [backgroundImage_cordinates, ...boundaries, enter_rects[0]]
         game_seq_counter = 1;
     }
 
@@ -233,10 +240,8 @@ function gameLoop(){
         // Call fix_collision to add elements to the boundaries array
         fix_collision(mapArr2, "inside1");
         backgroundImage.src = "./assets/houseMap.png"
-        console.log(boundaries);
         
         // Set movables with new elements
-        movables = [backgroundImage_cordinates, ...boundaries];
         game_seq_counter = 3;
     }
 
@@ -248,12 +253,30 @@ function gameLoop(){
                 y: -1320,
             }
         }
-        movables = [backgroundImage_cordinates, ...boundaries];
+        if(enter_rects[1] === undefined){
+            enter_rects[1] = back_outside_rect;
+            console.log("lolz")
+        }
+        movables = [backgroundImage_cordinates, ...boundaries, enter_rects[1]];
         game_seq_counter = 4;
     }
     
-    
-    
+
+    if(game_seq_counter === 4){
+        movables = [backgroundImage_cordinates, ...boundaries, enter_rects[1]];
+        enter_rects[1].draw();
+        if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[1]})){
+            console.log("collision with enter_rects2")
+            game_seq_counter = 5
+        }
+    }
+
+    if(game_seq_counter === 5){
+        movables = [backgroundImage_cordinates, ...boundaries, enter_rects[2]];
+       
+    }
+
+
 
     
     
@@ -359,7 +382,13 @@ function gameLoop(){
         }
     }
     
-    player1.draw();
+
+    
+    boundaries.forEach((a_boundary) => {
+        a_boundary.draw("red");
+    })
+    
+    player1.draw("blue");
 }
 
 gameLoop();
