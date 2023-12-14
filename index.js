@@ -240,11 +240,11 @@ let movables = [backgroundImage_cordinates, ...boundaries, enter_inside];
 
 //VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
-
+let i = 0;
 
 function gameLoop(){
     requestAnimationFrame(gameLoop);
-
+    console.log(i++);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     let moving = true;
