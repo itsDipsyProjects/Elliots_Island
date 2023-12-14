@@ -123,12 +123,12 @@ function fix_collision(the_mapArr_from_tiled, which_is_it){
     
         const offset = {
             x: -1050,
-            y: -1000,
+            y: -1100,
         }
         
         mapArr_2D.forEach((row, i) => {
             row.forEach((symbol, j) => { 
-                if (symbol === 1025 || symbol === 627 || symbol === 529 ) {
+                if (symbol === 958 || symbol === 1222 || symbol === 1174  ) {
                     boundaries.push(
                         new Boundary({
                             posistion:{
@@ -217,7 +217,7 @@ let lastkeyPress =  "";
 
 let enter_inside = new Boundary({posistion: {x: 550, y: 270}});
 let enter_upstairs = new Boundary({posistion: {x: 880, y: -190}});
-let enter_computer = new Boundary({posistion: {x: 800, y: 100}});
+let enter_computer = new Boundary({posistion: {x: 800, y: -75}});
 
 let enter_rects = [];
 enter_rects[0] = enter_inside;
@@ -240,11 +240,10 @@ let movables = [backgroundImage_cordinates, ...boundaries, enter_inside];
 
 //VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
-let i = 0;
 
 function gameLoop(){
     requestAnimationFrame(gameLoop);
-    console.log(i++);
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     let moving = true;
@@ -309,7 +308,7 @@ function gameLoop(){
         backgroundImage_cordinates = {
             posistion: {
                 x: -1070,
-                y: -1000,
+                y: -1120,
             }
         }
         backgroundImage.src = "./assets/uppstairs.png"
@@ -431,6 +430,7 @@ function gameLoop(){
             });
         }
     }
+    
     
     
     player1.draw("blue");
