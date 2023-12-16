@@ -6,16 +6,28 @@ let ctx = canvas.getContext("2d");
 let boundaries = [];
 
 class player{
-    constructor({posistion}){
+    constructor({posistion}, image){
         this.posistion = posistion;
-        this.width = 48
-        this.height = 48;
+        this.image = image;
+        this.image.onload = () => {
+            this.width = this.image.width / 4;
+            this.height = this.image.height;
+        };
     }
 
     
     draw(){
-        ctx.fillStyle = "blue";
-        ctx.fillRect(this.posistion.x, this.posistion.y , this.width, this.height);
+        ctx.drawImage(
+            this.image,
+            0,
+            0,
+            this.image.width / 4,
+            this.image.height,
+            this.posistion.x, 
+            this.posistion.y, 
+            this.image.width / 4, 
+            this.image.height,
+        );
     }
 }
 
@@ -156,10 +168,13 @@ let backgroundImage_cordinates = {
     }
 }
 
+let playerImage = new Image();
+playerImage.src = "./assets/playerDown.png"
+
 let player1 = new player({posistion: {
     x: player_cordinates.x,
     y: player_cordinates.y,
-}})
+}}, playerImage);
 
 let keys_pressed = {
     w: false,
@@ -249,7 +264,6 @@ function gameLoop(){
     let moving = true;
    
     if(game_seq_counter === 1){
-        enter_rects[0].draw("yellow");
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[0]})){
             console.log("collision with test")
             enter_rects.slice(0,1);
@@ -284,10 +298,6 @@ function gameLoop(){
                 y: -1320,
             }
         }
-        if(enter_rects[1] === undefined){
-            enter_rects[1] = back_outside_rect;
-            console.log("lolz")
-        }
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[1]];
         game_seq_counter = 4;
     }
@@ -295,7 +305,6 @@ function gameLoop(){
 
     if(game_seq_counter === 4){
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[1]];
-        enter_rects[1].draw();
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[1]})){
             console.log("collision with enter_rects2")
             boundaries.splice(0, boundaries.length)
@@ -317,8 +326,6 @@ function gameLoop(){
 
     if(game_seq_counter === 6){
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[2]];
-
-        enter_rects[2].draw();
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[2]})){
             window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
             
@@ -433,7 +440,7 @@ function gameLoop(){
     
     
     
-    player1.draw("blue");
+    player1.draw();
 }
 
 gameLoop();
