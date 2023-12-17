@@ -35,8 +35,8 @@ class player{
 class Boundary {
     constructor({posistion}){
         this.posistion = posistion;
-        this.width = 48;
-        this.height = 48;
+        this.width = 32;
+        this.height = 32;
     }
 
     draw(color){
@@ -186,6 +186,7 @@ let keys_pressed = {
 window.addEventListener("keydown", (event) => {
     switch(event.key){
         case "w":
+            console.log("yes");
             keys_pressed.w = true;
             lastkeyPress = "w";
         break;
@@ -438,7 +439,9 @@ function gameLoop(){
         }
     }
     
-    
+    // boundaries.forEach(bond => {
+    //     bond.draw("red");
+    // })
     
     player1.draw();
 }

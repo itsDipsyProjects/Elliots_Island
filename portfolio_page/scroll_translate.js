@@ -7,10 +7,25 @@ if(window.innerWidth <= 1104){
 
 
 let top_row = document.querySelector("#top_row");
+let top_row_divs = document.querySelectorAll("#top_row div");
 let bottom_row = document.querySelector("#bottom_row");
-
+let bottom_row_divs = document.querySelectorAll("#bottom_row div");
 let background = document.querySelector("#first_section");
 let incrementorB;
+
+
+top_row_divs.forEach(a_box => {
+  a_box.addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex.html"
+  })
+})
+
+bottom_row_divs.forEach(a_box => {
+  a_box.addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex.html"
+  });
+ })
+
 
 function getBackgroundPositionYAsNumber(element) {
   // Get the computed style of the element

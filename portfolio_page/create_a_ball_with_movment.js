@@ -55,7 +55,7 @@ function init_ball_on_second_section(where_to_append, text_inside){
     
     the_ball.addEventListener("click", (event) => {    
         
-        window.location.href = "http://127.0.0.1:5500/portfolio_page/yaboi.html"
+        window.location.href = "http://127.0.0.1:5500/portfolio_page/contact.html"
         
     });
 }
