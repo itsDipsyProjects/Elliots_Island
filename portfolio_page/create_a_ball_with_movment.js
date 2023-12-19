@@ -62,4 +62,75 @@ function init_ball_on_second_section(where_to_append, text_inside){
 
 init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
 
+function init_text_effect(which_element) {
+    let distanceFactor = 1;
+    let easingFactor = 0.001; // Adjust this value for desired easing effect
 
+    let targetX = 0;
+    let targetY = 0;
+
+    if(which_element === document.querySelector("#logo_name") || which_element === document.querySelector(".test1") || which_element === document.querySelector(".test2") || which_element === document.querySelector(".test3")){
+        distanceFactor = 1;
+        easingFactor = 0.005; 
+        targetX = 0;
+        targetY = 0;
+    }
+   
+   
+
+    function updatePosition() {
+        let currentX = parseFloat(getComputedStyle(which_element).transform.split(",")[4]) || 0;
+        let currentY = parseFloat(getComputedStyle(which_element).transform.split(",")[5]) || 0;
+
+        let deltaX = targetX - currentX;
+        let deltaY = targetY - currentY;
+
+        currentX += deltaX * easingFactor;
+        currentY += deltaY * easingFactor;
+
+        which_element.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+        requestAnimationFrame(updatePosition);
+    }
+
+    which_element.addEventListener("mousemove", (event) => {
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+
+        let ballRect = which_element.getBoundingClientRect();
+
+        // Check if the mouse is inside the element
+        if (
+            mouseX >= ballRect.left &&
+            mouseX <= ballRect.right &&
+            mouseY >= ballRect.top &&
+            mouseY <= ballRect.bottom
+        ) {
+            targetX = (mouseX - ballRect.left) - ballRect.width / 2;
+            targetY = (mouseY - ballRect.top) - ballRect.height / 2;
+
+            requestAnimationFrame(updatePosition);
+        }
+    });
+
+    which_element.addEventListener("mouseleave", () => {
+        targetX = 0;
+        targetY = 0;
+
+        requestAnimationFrame(updatePosition);
+    });
+
+    // Start the animation loop
+    requestAnimationFrame(updatePosition);
+}
+
+
+
+init_text_effect(document.querySelector("#logo_name"));
+init_text_effect(document.querySelector(".test1"));
+init_text_effect(document.querySelector(".test2"));
+init_text_effect(document.querySelector(".test3"));
+init_text_effect(document.querySelector("#first_text"));
+init_text_effect(document.querySelector("#second_text"));
+init_text_effect(document.querySelector("#third_text"));
+init_text_effect(document.querySelector("#fourth_text"));

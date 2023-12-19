@@ -91,6 +91,8 @@ body{
         justify-content: start;
         font-size: 80px;
         margin-left: 100px;
+        gap: 80px;
+        margin-bottom: 100px;
     }
     
     h1{
@@ -111,16 +113,17 @@ body{
         display: flex;
         width: 100%;
         height: fit-content;
-        margin-top: 100px;
-        margin-bottom: 100px;
     }
     
     #third_text{
-        width: fit-content;
-        margin-bottom: 100px;
-        margin-left: 90px;
-        font-size: 80px;
-        flex-wrap: wrap;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+    }
+    #fourth_text{
+        display: flex;
+        width: 100%;
+        height: fit-content;
     }
     
     
@@ -527,6 +530,13 @@ body{
     }
     
     #third_text{
+        width: fit-content;
+        margin-bottom: 100px;
+        font-size: 90px;
+        margin-right: 150px;
+    }
+
+    #fourth_text{
         width: fit-content;
         margin-bottom: 100px;
         font-size: 90px;
@@ -940,18 +950,20 @@ body{
         display: flex;
         width: 100%;
         height: fit-content;
-        margin-top: 100px;
-        margin-bottom: 100px;
+        
     }
     
     #third_text{
-        margin: 0;
-        width: fit-content;
-        margin-bottom: 100px;
-        margin-left: 50px;
-        font-size: 72px;
+        display: flex;
+        width: 100%;
+        height: fit-content;
     }
 
+    #fourth_text{
+        display: flex;
+        width: 100%;
+        height: fit-content;
+    }
   
     
     /*SECOND SECTION --------------------------------------------------------------------------------*/
@@ -1358,16 +1370,14 @@ body{
         display: flex;
         width: 100%;
         height: fit-content;
-        margin-top: 100px;
-        margin-bottom: 100px;
+      
     }
     
     #third_text{
-        margin: 0;
-        width: fit-content;
-        margin-bottom: 100px;
-        margin-left: 50px;
-        font-size: 60px;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+      
     }
 
   
@@ -1541,7 +1551,7 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 550px;
+        width: 430px;
         height: 200px;
         font-size: 25px;
     }
@@ -1556,16 +1566,19 @@ body{
     }
     
     #second_section_in_third_section_text p{
-       margin: 100px;
-       font-size: 25px;
+        width: 430px;
+        height: 200px;
+        font-size: 25px;
+        margin-bottom: 100px;
     }
     
     #thrid_section_in_third_section_text{
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        width: 85%;
+        width: 70%;
         height: fit-content;
         font-size: 25px;
     }
@@ -1627,6 +1640,7 @@ body{
     
     
     #picture_of_me{
+        display: none;
         width: 200px;
         height: 200px;
         border-radius: 100%;
