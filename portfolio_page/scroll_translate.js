@@ -54,7 +54,6 @@ if (backgroundPositionYValue !== null) {
 
 incrementorB = backgroundPositionYValue;
 
-console.log(incrementorB)
 
 
 
@@ -64,7 +63,7 @@ let incrementor = 0;
 let demencrator = 0;
 let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-console.log("hello");
+
 
 
 
@@ -83,19 +82,19 @@ window.addEventListener("resize", (event) => {
   console.log(window.innerWidth);
 
   if (window.innerWidth >= 1950 ) {
-    console.log("yes");
+    
     incrementorB = -500;
     background.style.backgroundPositionY = `${incrementorB}px`;
   } 
 
   else if (window.innerWidth < 1950 && window.innerWidth > 1334) {
-    console.log("no");
+    
     incrementorB = -180;
     background.style.backgroundPositionY = `${incrementorB}px`;
   }
 
   else if (window.innerWidth <= 1334) {
-    console.log("no2");
+    
     incrementorB = 0;
     background.style.backgroundPositionY = `${incrementorB}px`;
   }
@@ -106,14 +105,14 @@ window.addEventListener("scroll", handleScroll)
 
 function handleScroll() {
   
-  console.log(the_stop_value);
+  
   if(the_stop_value === true){
     window.removeEventListener("scroll", handleScroll);  
     top_row.style.transform = `translateX(0px)`;
     bottom_row.style.transform = `translateX(0px)`;
   }
 
-  console.log(incrementorB)
+  
 
 
   // Get the current scroll position
@@ -150,7 +149,7 @@ function handleScroll() {
 
   }
 
-  console.log(the_stop_value);
+  
   if(the_stop_value === true){
     window.removeEventListener("scroll", handleScroll);  
     top_row.style.transform = `translateX(0px)`;

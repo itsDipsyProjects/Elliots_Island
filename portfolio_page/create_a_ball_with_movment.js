@@ -1,12 +1,15 @@
 
-function init_ball_on_second_section(where_to_append, text_inside){
+function init_ball_on_second_section(where_to_append, text_inside, what_type){
     let the_ball = document.createElement("div");
     the_ball.classList.add("the_ball_what_do_i_do");
-
+    if(what_type === 2){
+        the_ball.classList.remove("the_ball_what_do_i_do")
+        the_ball.classList.add("the_ball_what_do_i_do2");
+    }
     the_ball.innerHTML = `
         <div class="test">${text_inside}</div>
     `;
-    where_to_append.appendChild(the_ball)
+    where_to_append.append(the_ball)
     let test1 = document.querySelector(".test");
     let distanceFactor = 5;
     
@@ -47,21 +50,26 @@ function init_ball_on_second_section(where_to_append, text_inside){
             test1.style.transform = `translate(${new_value_x}px, ${new_value_y}px)`;
         }
     });
-
+    if(what_type !== 2){
+        the_ball.addEventListener("click", (event) => {    
+            
+            window.location.href = "http://127.0.0.1:5500/portfolio_page/contact.html"
+            
+        });
+    }
+    if(what_type === 2){
+        the_ball.addEventListener("click", (event) => {    
+            
+            window.location.href = "http://127.0.0.1:5500/portfolio_page/ricochet.html"
+            
+        });
+    }
     the_ball.addEventListener("mouseleave", (event) => {   
         the_ball.style.transform = `translate(${0}px, ${0}px)`; 
         test1.style.transform = `translate(${0}px, ${0}px)`;
     });
     
-    the_ball.addEventListener("click", (event) => {    
-        
-        window.location.href = "http://127.0.0.1:5500/portfolio_page/contact.html"
-        
-    });
 }
-
-init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
-
 function init_text_effect(which_element) {
     let distanceFactor = 1;
     let easingFactor = 0.001; // Adjust this value for desired easing effect
@@ -126,11 +134,43 @@ function init_text_effect(which_element) {
 
 
 
-init_text_effect(document.querySelector("#logo_name"));
-init_text_effect(document.querySelector(".test1"));
-init_text_effect(document.querySelector(".test2"));
-init_text_effect(document.querySelector(".test3"));
-init_text_effect(document.querySelector("#first_text"));
-init_text_effect(document.querySelector("#second_text"));
-init_text_effect(document.querySelector("#third_text"));
-init_text_effect(document.querySelector("#fourth_text"));
+if(window.location.href === "http://127.0.0.1:5500/portfolio_page/portfolio.html"){
+    init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
+    init_text_effect(document.querySelector("#first_text"));
+    init_text_effect(document.querySelector("#second_text"));
+    init_text_effect(document.querySelector("#third_text"));
+    init_text_effect(document.querySelector("#fourth_text"));
+    init_text_effect(document.querySelector("#logo_name"));
+    init_text_effect(document.querySelector(".test1"));
+    init_text_effect(document.querySelector(".test2"));
+    init_text_effect(document.querySelector(".test3"));
+}    
+
+
+if(window.location.href === "http://127.0.0.1:5500/portfolio_page/my_work_ex.html"){
+
+    init_text_effect(document.querySelector("#logo_name"));
+    init_text_effect(document.querySelector(".test1"));
+    init_text_effect(document.querySelector(".test2"));
+    init_text_effect(document.querySelector(".test3"));
+    init_text_effect(document.querySelector("footer h1"));
+    init_ball_on_second_section(document.querySelector("#container_for_popup"), "Next Case", 2)
+}    
+
+
+
+
+document.querySelector("#logo_name").addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+})
+
+document.querySelector(".test1").addEventListener("click", () => {
+   
+})
+document.querySelector(".test2").addEventListener("click", () => {
+    
+})
+
+document.querySelector(".test3").addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+})
