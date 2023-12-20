@@ -1,0 +1,84 @@
+@font-face {
+    font-family: pixel;
+    src: url("../assets/fonts/PixelifySans-VariableFont_wght.ttf");
+}
+
+body{
+    background-color: black;
+    font-family: pixel;
+    margin: 0;
+}
+
+
+#container{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: sticky;
+}
+
+
+nav{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo_name{
+    font-size: 35px;
+}
+
+ul{
+    width: 34%;
+    display: flex;
+    margin: 0;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 25px;
+}
+
+
+#first_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 1000px;
+    background-image: url("../assets/for_rico.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#first_section h1{
+    color: white;
+    font-size: 120px;
+}
+
+#first_section p{
+    color: white;
+    font-size: 60px;
+    margin: 0;
+    margin-left: 20px;
+}
+
+
+#second_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 1000px;
+}
