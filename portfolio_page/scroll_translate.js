@@ -16,13 +16,13 @@ let incrementorB;
 
 top_row_divs.forEach(a_box => {
   a_box.addEventListener("click", () => {
-    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex.html"
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_work_ex.html"
   })
 })
 
 bottom_row_divs.forEach(a_box => {
   a_box.addEventListener("click", () => {
-    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex.html"
+    window.location.href = "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_work_ex.html"
   });
  })
 
