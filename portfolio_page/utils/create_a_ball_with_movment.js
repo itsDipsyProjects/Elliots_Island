@@ -141,6 +141,19 @@ if(window.location.href === "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_
     init_text_effect(document.querySelector(".test3"));
     init_text_effect(document.querySelector("footer h1"));
     init_ball_on_second_section(document.querySelector("#container_for_popup"), "Next Case", 2)
+    document.querySelector(".the_ball_what_do_i_do2").addEventListener("click", () => {
+        window.location.href = "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html";
+    })
+}
+
+if(window.location.href === "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html"){
+
+    init_text_effect(document.querySelector("#logo_name"));
+    init_text_effect(document.querySelector(".test1"));
+    init_text_effect(document.querySelector(".test2"));
+    init_text_effect(document.querySelector(".test3"));
+    init_text_effect(document.querySelector("#first_section h1"));
+    init_text_effect(document.querySelector("#first_section p"));
 }    
 
 
