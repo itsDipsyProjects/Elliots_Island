@@ -50,20 +50,6 @@ function init_ball_on_second_section(where_to_append, text_inside, what_type){
             test1.style.transform = `translate(${new_value_x}px, ${new_value_y}px)`;
         }
     });
-    if(what_type !== 2){
-        the_ball.addEventListener("click", (event) => {    
-            
-            window.location.href = "http://127.0.0.1:5500/portfolio_page/contact/contact.html"
-            
-        });
-    }
-    if(what_type === 2){
-        the_ball.addEventListener("click", (event) => {    
-            
-            window.location.href = "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html"
-            
-        });
-    }
     the_ball.addEventListener("mouseleave", (event) => {   
         the_ball.style.transform = `translate(${0}px, ${0}px)`; 
         test1.style.transform = `translate(${0}px, ${0}px)`;
@@ -164,13 +150,4 @@ document.querySelector("#logo_name").addEventListener("click", () => {
     window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
 })
 
-document.querySelector(".test1").addEventListener("click", () => {
-   
-})
-document.querySelector(".test2").addEventListener("click", () => {
-    
-})
 
-document.querySelector(".test3").addEventListener("click", () => {
-    window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
-})

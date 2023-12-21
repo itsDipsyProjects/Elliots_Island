@@ -7,6 +7,10 @@ body{
     font-family: pixel;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+}
 /*This is for the laptop*/
 @media screen and (max-width: 1950px) {
     body{

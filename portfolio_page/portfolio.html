@@ -13,8 +13,8 @@
             <nav>
                 <div id="logo_name">Elliot Collins</div>
                 <ul>
-                    <li class="test1">My Work</li>
-                    <li class="test2">About Me</li>
+                    <li class="test1">My work</li>
+                    <li class="test2">About me</li>
                     <li class="test3">Contact</li>
                 </ul>
             </nav>
@@ -143,6 +143,43 @@
         </div>
         <div id="the_line"></div>
     </div>
+    <script src="./the_check.js"></script>
+    <script>
+        document.querySelectorAll("li").forEach(li => {
+    
+            if(li.innerHTML === "My work"){
+                li.addEventListener("click", (e) => {
+                    console.log("scroll")
+                    window.scrollTo({
+                        top: 1530,
+                        behavior: "smooth",
+                    });
+                })
+            }
+
+            if(li.innerHTML === "About me"){
+                li.addEventListener("click", (e) => {
+                    console.log("scroll")
+                    window.scrollTo({
+                        top: 3050,
+                        behavior: "smooth",
+                    });
+                })
+            }
+
+            if(li.innerHTML === "Contact"){
+                li.addEventListener("click", (e) => {
+                    console.log("scroll")
+                    window.scrollTo({
+                        top: 5050,
+                        behavior: "smooth",
+                    });
+                })
+            }
+                
+        })
+    
+    </script>
     <script src="./scroll_translate.js"></script>
     <script src="./utils/create_a_ball_with_movment.js"></script>
 </body>
