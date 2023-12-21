@@ -10,7 +10,7 @@ body{
     color: white;
 }
 
-
+/*FIRST SECTION -----------------------------------------------------------------------------------------*/
 #container{
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@ ul{
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 1000px;
+    height: 1200px;
     background-image: url("../assets/for_rico.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -74,8 +74,10 @@ ul{
     margin-left: 20px;
 }
 
+/*SECOND SECTION ----------------------------------------------------------*/
 
 #second_section{
+    margin-top: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,20 +89,57 @@ ul{
 
 #second_section h1{
     color: white;
-    font-size: 120px;
+    font-size: 80px;
 }
 
 #cards_container{
     margin-top: 200px;
     display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100%;
     justify-content: center;
     align-items: center;
     gap: 100px;
 }
+#descriptions{
+    display: flex;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+#descriptions div{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#description1{
+    font-size: 35px;
+    transform: translateY(10px);
+}
+
+#description2{
+    font-size: 35px;
+    transform: translateY(-50px);
+}
+
+#description3{
+    font-size: 35px;
+    transform: translateY(-100px);
+}
 
 
+#the_cards{
+    display: flex;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
 .card{
     width: 300px;
     height: 400px;
@@ -110,12 +149,192 @@ ul{
 
 #card1{
     transform: translateY(10px);
+    background-image: url("./assets/one.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #card2{
     transform: translateY(-50px);
+    background-image: url("./assets/three.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #card3{
     transform: translateY(-100px);
+    background-image: url("./assets/four.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*THIRD SECTION ---------------------------------------------------------------------------------------------------------------*/
+
+
+#third_section{
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: fit-content;
+    gap: 200px;
+}
+
+#information{
+    width: 80%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+}
+
+#background1{
+    width: 450px;
+    height: 400px;
+    background-image: url("./assets/five.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.text{
+    font-size: 45px;
+    width: 480px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#background2{
+    width: 450px;
+    height: 400px;
+    background-image: url("./assets/four.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+#background3{
+    width: 450px;
+    height: 400px;
+    background-image: url("./assets/two.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+#the_one p{
+    margin-left: 40px;
+}
+
+/*FOURTH SECTION ---------------------------------------------------------------------------------------------------------------------*/
+
+
+#fourth_section{
+    margin-top: 200px;
+    overflow-x: hidden;
+    width: 100vw;
+    min-height: 90vh;
+    display: flex;
+    
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 80px;
+}
+
+
+#first_section_in_fourth_section{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    margin-left: 300px;
+    margin-top: 200px;
+}
+
+#first_section_in_fourth_section h1{
+    margin: 0;
+}
+#container_first{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    gap: 40px;
+    justify-content: center;
+}
+
+
+#picture_of_me{
+    margin-right: 70px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+   
+    background-image: url("../assets/IMG_1548.jpg");
+    background-position: center;
+    background-size: cover;
+    justify-self: center;
+    align-self: center;
+}
+
+#the_line{
+    align-self: center;
+    width: 70%;
+    height: 5px;
+    background-color: gray;  
+    position: relative;
+    bottom: 120px;  
+}
+
+.the_ball_what_do_i_do{
+    z-index: 100;
+    margin-right: 100px;
+    align-self: flex-end;
+    font-size: 25px;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    background-color: rgb(158, 153, 153);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: font-size 0.3s ease;
+    
+    background-image: url("../assets/IMG_1548.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+
+
+.the_ball_what_do_i_do:hover{
+    font-size: 30px;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    
+    background-image: url("../assets/IMG_1548.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    
 }

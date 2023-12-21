@@ -147,7 +147,7 @@ if(window.location.href === "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_
 }
 
 if(window.location.href === "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html"){
-
+    init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
     init_text_effect(document.querySelector("#logo_name"));
     init_text_effect(document.querySelector(".test1"));
     init_text_effect(document.querySelector(".test2"));
