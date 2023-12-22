@@ -183,10 +183,18 @@ let keys_pressed = {
     d: false,
 }
 
+
+let quest1 = new Image();
+quest1.src = "./assets/quest1.png";
+let quest2 = new Image();
+quest2.src = "./assets/quest2.png";
+let quest3 = new Image();
+quest3.src = "./assets/quest3.png";
+
 window.addEventListener("keydown", (event) => {
     switch(event.key){
         case "w":
-            console.log("yes");
+            console.log("W pressed");
             keys_pressed.w = true;
             lastkeyPress = "w";
         break;
@@ -442,7 +450,20 @@ function gameLoop(){
     // boundaries.forEach(bond => {
     //     bond.draw("red");
     // })
+    if(game_seq_counter === 1){
+        ctx.drawImage(quest1, -120, 0);
+    }
+
+    if(game_seq_counter === 4){
+        ctx.drawImage(quest2, -120, -100);
+    }
+
+
     
+    if(game_seq_counter === 6){
+        ctx.drawImage(quest3, -120, -100);
+    }
+
     player1.draw();
 }
 
