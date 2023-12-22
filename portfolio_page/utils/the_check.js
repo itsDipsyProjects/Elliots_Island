@@ -9,7 +9,7 @@ if(localStorage.getItem("clicked_on_my_work") !== undefined && localStorage.getI
 if(localStorage.getItem("clicked_on_about_me") !== undefined && localStorage.getItem("clicked_on_about_me") === "true"){
     localStorage.removeItem("clicked_on_about_me")
     window.scrollTo({
-        top: 3060,
+        top: 2750,
         behavior: "smooth",
     });
 }
