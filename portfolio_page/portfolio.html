@@ -148,10 +148,16 @@
         
 
         document.querySelectorAll("li").forEach(li => {
-    
+
             if(li.innerHTML === "My work"){
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
+
+                    /*
+                        TODO: 
+                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
+                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
+                    */
                     window.scrollTo({
                         top: 1450,
                         behavior: "smooth",
@@ -162,6 +168,11 @@
             if(li.innerHTML === "About me"){
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
+                     /*
+                        TODO: 
+                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
+                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
+                    */
                     window.scrollTo({
                         top: 2750,
                         behavior: "smooth",
@@ -172,6 +183,11 @@
             if(li.innerHTML === "Contact"){
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
+                     /*
+                        TODO: 
+                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
+                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
+                    */
                     window.scrollTo({
                         top: 4550,
                         behavior: "smooth",
