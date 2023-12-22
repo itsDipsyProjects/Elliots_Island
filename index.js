@@ -16,10 +16,10 @@ class player{
     }
 
     
-    draw(){
+    draw(player_movement){
         ctx.drawImage(
             this.image,
-            0,
+            player_movement,
             0,
             this.image.width / 4,
             this.image.height,
@@ -30,7 +30,8 @@ class player{
         );
     }
 }
-
+let player_movement = 0;
+let player_movment_incrementor = 48;
 
 class Boundary {
     constructor({posistion}){
@@ -241,7 +242,7 @@ let lastkeyPress =  "";
 
 let enter_inside = new Boundary({posistion: {x: 550, y: 270}});
 let enter_upstairs = new Boundary({posistion: {x: 880, y: -190}});
-let enter_computer = new Boundary({posistion: {x: 800, y: -75}});
+let enter_computer = new Boundary({posistion: {x: 800, y: -52}});
 
 let enter_rects = [];
 enter_rects[0] = enter_inside;
@@ -264,10 +265,11 @@ let movables = [backgroundImage_cordinates, ...boundaries, enter_inside];
 
 //VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
+let frames_counter = 0;
 
 function gameLoop(){
     requestAnimationFrame(gameLoop);
-    
+    frames_counter++;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImage, backgroundImage_cordinates.posistion.x, backgroundImage_cordinates.posistion.y);
     let moving = true;
@@ -337,7 +339,7 @@ function gameLoop(){
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[2]];
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[2]})){
             window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
-            
+            game_seq_counter = 7;
         }
     }
 
@@ -365,6 +367,13 @@ function gameLoop(){
             
         }
         if(moving){
+            if(frames_counter % 12 === 0){
+                player1.image.src = "./assets/playerUp.png"
+                player_movement = player_movement + player_movment_incrementor;
+                if(player_movement === 192){
+                    player_movement = 0;
+                }
+            }
             movables.forEach((movable) => {
                 movable.posistion.y += 3;
             });
@@ -391,6 +400,14 @@ function gameLoop(){
             
         }
         if(moving){
+            if(frames_counter % 12 === 0){
+                player1.image.src = "./assets/playerDown.png"
+                player_movement = player_movement + player_movment_incrementor;
+                if(player_movement === 192){
+                    player_movement = 0;
+                }
+            }
+        
             movables.forEach((movable) => {
                 movable.posistion.y -= 3;
             });
@@ -416,6 +433,13 @@ function gameLoop(){
             
         }
         if(moving){
+            if(frames_counter % 12 === 0) {
+                player1.image.src = "./assets/playerLeft.png"
+                player_movement = player_movement + player_movment_incrementor;
+                if(player_movement === 192){
+                    player_movement = 0;
+                }
+            }
             movables.forEach((movable) => {
                 movable.posistion.x += 3;
             });
@@ -441,6 +465,13 @@ function gameLoop(){
             
         }
         if(moving){
+            if(frames_counter % 12 === 0){
+                player1.image.src = "./assets/playerRight.png"
+                player_movement = player_movement + player_movment_incrementor;
+                if(player_movement === 192){
+                    player_movement = 0;
+                }
+            }
             movables.forEach((movable) => {
                 movable.posistion.x -= 3;
             });
@@ -464,7 +495,16 @@ function gameLoop(){
         ctx.drawImage(quest3, -120, -100);
     }
 
-    player1.draw();
+
+    if(moving === false){
+        player_movement = 0;
+    }
+
+    if(game_seq_counter === 7){
+        return 0;
+    }
+
+    player1.draw(player_movement);
 }
 
 gameLoop();
