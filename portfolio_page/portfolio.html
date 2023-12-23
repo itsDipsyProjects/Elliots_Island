@@ -153,92 +153,30 @@
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
 
-                    /*
-                        TODO: 
-                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
-                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
-                    */
-
-                    if(window.innerWidth >= 1050 && window.innerWidth < 1650){
-                        window.scrollTo({
-                            top: 1250,
-                            behavior: "smooth",
-                        });
-                    }
-                    if(window.innerWidth <= 1050){
-                        window.scrollTo({
-                            top: 1129,
-                            behavior: "smooth",
-                        });
-                    }
-                    if(window.innerWidth >= 1650){
-                        window.scrollTo({
-                            top: 1280,
-                            behavior: "smooth",
-                        }); 
-                    }
+                    document.querySelector("#second_section").scrollIntoView({
+                        behavior:"smooth"
+                    });
+                    
                 })
             }
 
             if(li.innerHTML === "About me"){
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
-                     /*
-                        TODO: 
-                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
-                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
-                    */
-                    if(window.innerWidth >= 1050 && window.innerWidth < 1650){
-                        window.scrollTo({
-                            top: 2550,
-                            behavior: "smooth",
-                        });
-                    }
+                   
+                    document.querySelector("#third_section").scrollIntoView({
+                        behavior:"smooth"
+                    });
 
-                    if(window.innerWidth <= 1050){
-                        window.scrollTo({
-                            top: 4360,
-                            behavior: "smooth",
-                        });
-                    }
-
-                    if(window.innerWidth >= 1650){
-                        window.scrollTo({
-                            top: 2500,
-                            behavior: "smooth",
-                        }); 
-                    }
                 })
             }
 
             if(li.innerHTML === "Contact"){
                 li.addEventListener("click", (e) => {
                     console.log("scroll")
-                     /*
-                        TODO: 
-                        Här måste jag kolla olika skärm stolekar med window.innerWidth för att förstå vart den ska
-                        ska scrolla till i pixlar för det ändras när man schyssterar skärmen.
-                    */
-                    if(window.innerWidth >= 1050){
-                        window.scrollTo({
-                            top: 6850,
-                            behavior: "smooth",
-                        });
-                    }
-
-                    if(window.innerWidth <= 1050){
-                        console.log("yas")
-                        window.scrollTo({
-                            top: 6850,
-                            behavior: "smooth",
-                        });
-                    }
-                    if(window.innerWidth >= 1650){
-                        window.scrollTo({
-                            top: 4800,
-                            behavior: "smooth",
-                        }); 
-                    }
+                    document.querySelector("#fourth_section").scrollIntoView({
+                        behavior:"smooth"
+                    });
                 })
             }
                 
