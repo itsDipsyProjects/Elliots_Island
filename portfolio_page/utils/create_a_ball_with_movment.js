@@ -120,7 +120,7 @@ function init_text_effect(which_element) {
 
 
 
-if(window.location.href === "http://127.0.0.1:5500/portfolio_page/portfolio.html"){
+if(localStorage.getItem("where") === "main"){
     init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
     init_text_effect(document.querySelector("#first_text"));
     init_text_effect(document.querySelector("#second_text"));
@@ -133,7 +133,7 @@ if(window.location.href === "http://127.0.0.1:5500/portfolio_page/portfolio.html
 }    
 
 
-if(window.location.href === "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_work_ex.html"){
+if(localStorage.getItem("where") === "elliot"){
 
     init_text_effect(document.querySelector("#logo_name"));
     init_text_effect(document.querySelector(".test1"));
@@ -142,11 +142,13 @@ if(window.location.href === "http://127.0.0.1:5500/portfolio_page/my_work_ex/my_
     init_text_effect(document.querySelector("footer h1"));
     init_ball_on_second_section(document.querySelector("#container_for_popup"), "Next Case", 2)
     document.querySelector(".the_ball_what_do_i_do2").addEventListener("click", () => {
-        window.location.href = "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html";
+        window.location.href = "../richochet/ricochet.html";
+        localStorage.clear();
+        localStorage.setItem("where", "ricochet")
     })
 }
 
-if(window.location.href === "http://127.0.0.1:5500/portfolio_page/richochet/ricochet.html"){
+if(localStorage.getItem("where") === "ricochet"){
     init_ball_on_second_section(document.querySelector("#first_section_in_fourth_section"), "contact");
     init_text_effect(document.querySelector("#logo_name"));
     init_text_effect(document.querySelector(".test1"));
@@ -160,7 +162,7 @@ if(window.location.href === "http://127.0.0.1:5500/portfolio_page/richochet/rico
 
 
 document.querySelector("#logo_name").addEventListener("click", () => {
-    window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+    window.location.href = "../portfolio.html";
 })
 
 

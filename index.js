@@ -338,7 +338,8 @@ function gameLoop(){
     if(game_seq_counter === 6){
         movables = [backgroundImage_cordinates, ...boundaries, enter_rects[2]];
         if(rectangularCollision({rectangle1: player1, rectangle2:enter_rects[2]})){
-            window.location.href = "http://127.0.0.1:5500/portfolio_page/portfolio.html";
+            window.location.href = "./portfolio_page/portfolio.html";
+            localStorage.setItem("where", "main");
             game_seq_counter = 7;
         }
     }
