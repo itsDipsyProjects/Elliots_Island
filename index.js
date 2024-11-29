@@ -297,7 +297,7 @@ function gameLoop(){
         fix_collision(mapArr2, "inside1");
         backgroundImage.src = "./assets/houseMap.png"
         
-        // Set movables with new elements
+     
         game_seq_counter = 3;
     }
 
