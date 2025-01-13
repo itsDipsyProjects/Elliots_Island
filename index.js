@@ -48,7 +48,7 @@ class Boundary {
 
 canvas.width = 1200;
 canvas.height = 1000;
-// Draw background
+
 
 let backgroundImage = new Image();
 backgroundImage.src = "./assets/outside.png";
@@ -263,7 +263,6 @@ function rectangularCollision({rectangle1, rectangle2})
 
 let movables = [backgroundImage_cordinates, ...boundaries, enter_inside];
 
-//VERY IMPORTANT FOR CONTROLL ST
 let game_seq_counter = 0;
 let frames_counter = 0;
 
@@ -290,10 +289,8 @@ function gameLoop(){
     }
 
     if (game_seq_counter === 2) {
-        // Clear the boundaries array
         boundaries.splice(0, boundaries.length);
     
-        // Call fix_collision to add elements to the boundaries array
         fix_collision(mapArr2, "inside1");
         backgroundImage.src = "./assets/houseMap.png"
         

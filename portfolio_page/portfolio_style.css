@@ -373,7 +373,7 @@ a{
         width: 200px;
         height: 200px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
     }
@@ -395,7 +395,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
         display: flex;
@@ -413,7 +413,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
 
@@ -790,8 +790,7 @@ a{
         width: 200px;
         height: 200px;
         border-radius: 100%;
-       
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
     }
@@ -820,7 +819,7 @@ a{
         color: white;
         transition: font-size 0.3s ease;
         
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
         position: relative;
@@ -834,7 +833,7 @@ a{
         height: 250px;
         border-radius: 100%;
         
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-position: center;
         background-size: cover;
         display: flex;
@@ -1214,7 +1213,7 @@ a{
         height: 200px;
         border-radius: 100%;
         background-color: rgb(233, 233, 233);
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         align-self: flex-end;
     }
@@ -1237,7 +1236,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -1254,7 +1253,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -1643,7 +1642,7 @@ a{
         height: 200px;
         border-radius: 100%;
         background-color: rgb(233, 233, 233);
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         align-self: center;
         justify-self: center;
@@ -1666,7 +1665,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -1684,7 +1683,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -2069,7 +2068,7 @@ a{
         height: 200px;
         border-radius: 100%;
         background-color: rgb(233, 233, 233);
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         align-self: center;
         justify-self: center;
@@ -2092,7 +2091,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -2110,7 +2109,7 @@ a{
         width: 250px;
         height: 250px;
         border-radius: 100%;
-        background-image: url("./assets/IMG_1548.jpg");
+        background-color: blue;
         background-size: cover;
         display: flex;
         justify-content: center;
