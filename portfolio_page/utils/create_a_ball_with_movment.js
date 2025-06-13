@@ -140,9 +140,9 @@ if(localStorage.getItem("where") === "elliot"){
     init_text_effect(document.querySelector(".test2"));
     init_text_effect(document.querySelector(".test3"));
     init_text_effect(document.querySelector("footer h1"));
-    init_ball_on_second_section(document.querySelector("#container_for_popup"), "Next Case", 2)
+    init_ball_on_second_section(document.querySelector("#container_for_popup"), "Back To Start", 2)
     document.querySelector(".the_ball_what_do_i_do2").addEventListener("click", () => {
-        window.location.href = "../richochet/ricochet.html";
+        window.location.href = "../portfolio.html";
         localStorage.clear();
         localStorage.setItem("where", "ricochet")
     })
