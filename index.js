@@ -2,6 +2,7 @@
 const canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
 
+alert("Use W,S,A,D to move around");
 
 let boundaries = [];
 
